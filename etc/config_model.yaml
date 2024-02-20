@@ -1,0 +1,14 @@
+Name: api
+Host: 0.0.0.0
+Port: 9503
+Mode: dev
+
+Token:
+  Appid: BusinessGj76dlhjda9jhqw83aldakMn
+  Secret: tkXwfkikm90lqdGhxPokdqDgjkNwHeqSoLpUjNvxSXaM
+  Expire: 86400
+
+#open im
+ImUrl: "https://im.api.teltlk.com/api"
+#回调自己
+CallBackUrl: "https://api.circle.teltlk.com"

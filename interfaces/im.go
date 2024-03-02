@@ -12,8 +12,11 @@ import (
 )
 
 // 支付相关-订单退款
-func RefundOrder(orderId, amount string) error {
-	url := configs.Conf.ImUrl + "/wallet/refund_order"
+func RefundOrder(orderId, amount string, isModel bool) error {
+	url := configs.Conf.TestImUrl + "/wallet/refund_order"
+	if isModel {
+		url = configs.Conf.ImUrl + "/wallet/refund_order"
+	}
 	// 生成随机订单号
 	nonce := utils.GenerateRandomOrderID()
 	// 构建请求参数
@@ -46,8 +49,11 @@ func RefundOrder(orderId, amount string) error {
 }
 
 // 支付相关-订单提现
-func PayOutCurrencyForOfficial(userCard, currencyid, amount string) error {
-	url := configs.Conf.ImUrl + "/wallet/pay_out_currency_for_official"
+func PayOutCurrencyForOfficial(userCard, currencyid, amount string, isModel bool) error {
+	url := configs.Conf.TestImUrl + "/wallet/pay_out_currency_for_official"
+	if isModel {
+		url = configs.Conf.ImUrl + "/wallet/pay_out_currency_for_official"
+	}
 	outOrderID := utils.GenerateRandomOrderID()
 	// 构建请求参数
 	params := map[string]any{
@@ -90,8 +96,11 @@ func PayOutCurrencyForOfficial(userCard, currencyid, amount string) error {
 }
 
 // 支付相关-创建订单
-func CreateOrder(title string, coinType int64, amount string, nonce string) (*protos.ImCommonResp, string, error) {
-	url := configs.Conf.ImUrl + "/wallet/create_order"
+func CreateOrder(title string, coinType int64, amount string, nonce string, isModel bool) (*protos.ImCommonResp, string, error) {
+	url := configs.Conf.TestImUrl + "/wallet/create_order"
+	if isModel {
+		url = configs.Conf.ImUrl + "/wallet/create_order"
+	}
 	callBackUrl := configs.Conf.CallBackUrl + "/ReceivePayResult"
 	// 构建请求参数
 	params := map[string]any{
@@ -126,8 +135,11 @@ func CreateOrder(title string, coinType int64, amount string, nonce string) (*pr
 }
 
 // 支付相关-查询订单
-func QueryOrder(orderId string) (*protos.ImCommonResp, error) {
-	url := configs.Conf.ImUrl + "/wallet/query_order"
+func QueryOrder(orderId string, isModel bool) (*protos.ImCommonResp, error) {
+	url := configs.Conf.TestImUrl + "/wallet/query_order"
+	if isModel {
+		url = configs.Conf.ImUrl + "/wallet/query_order"
+	}
 	nonce := utils.GenerateRandomOrderID()
 	// 构建请求参数
 	params := map[string]interface{}{
@@ -158,8 +170,11 @@ func QueryOrder(orderId string) (*protos.ImCommonResp, error) {
 }
 
 // 支付相关-查询openid
-func GetOpenId(account string) (*protos.ImCommonResp, error) {
-	url := configs.Conf.ImUrl + "/official/get_openid"
+func GetOpenId(account string, isModel bool) (*protos.ImCommonResp, error) {
+	url := configs.Conf.TestImUrl + "/official/get_openid"
+	if isModel {
+		url = configs.Conf.ImUrl + "/official/get_openid"
+	}
 	nonce := utils.GenerateRandomOrderID()
 	// 构建请求参数
 	params := map[string]interface{}{

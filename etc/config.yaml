@@ -11,6 +11,7 @@ Token:
 
 
 #open im
-ImUrl: "https://dev.api.teltlk.com/api"
+TestImUrl: "https://dev.api.teltlk.com/api"
+ImUrl: "https://im.api.teltlk.com/api"
 #回调自己
-CallBackUrl: "https://dev.api.circle.teltlk.com:8443"
+CallBackUrl: "https://dev.api.circle.teltlk.com"

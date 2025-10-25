@@ -13,7 +13,10 @@ type Config struct {
 		Secret string
 		Expire int64
 	}
-	TestImUrl   string
-	ImUrl       string
-	CallBackUrl string
+	TestImUrl    string
+	ImUrl        string
+	CallBackUrl  string
+	ClientLogReq struct {
+		Path string
+	}
 }

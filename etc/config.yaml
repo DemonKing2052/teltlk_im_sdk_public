@@ -15,3 +15,5 @@ TestImUrl: "https://dev.api.teltlk.com/api"
 ImUrl: "https://im.api.teltlk.com/api"
 #回调自己
 CallBackUrl: "https://dev.api.circle.teltlk.com"
+ClientLogReq:
+    path: "client_log_req.log"

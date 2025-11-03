@@ -35,7 +35,7 @@ func ensureLogFile(p string) *os.File {
 	if err := os.MkdirAll(dir, 0755); err != nil {
 		return nil
 	}
-	f, err := os.OpenFile(p, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0644)
+	f, err := os.OpenFile(p, os.O_CREATE|os.O_RDWR, 0644)
 	if err != nil {
 		return nil
 	}

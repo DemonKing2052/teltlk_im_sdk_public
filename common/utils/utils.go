@@ -173,3 +173,26 @@ func FloatTo7Str(i float64) string {
 		return n
 	}
 }
+
+// PageData 提取页码数据
+type PageData struct {
+	Page     int `json:"page"`
+	PageSize int `json:"page_size"`
+	Offset   int
+}
+
+// GetPageData 自定义页码返回
+func GetPageData(data PageData) PageData {
+	if data.Page <= 0 {
+		data.Page = 1
+	}
+	if data.PageSize <= 0 || data.PageSize > 100 {
+		data.PageSize = 100
+	}
+	offset := (data.Page - 1) * data.PageSize
+	return PageData{
+		Page:     data.Page,
+		PageSize: data.PageSize,
+		Offset:   offset,
+	}
+}

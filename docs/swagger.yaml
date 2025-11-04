@@ -1,0 +1,1319 @@
+definitions:
+  protos.CategoryInfoItem:
+    properties:
+      id:
+        description: 分类ID
+        type: integer
+      img_href:
+        description: 图片地址
+        type: string
+      title:
+        description: 分类标题
+        type: string
+    type: object
+  protos.DiscoverToolEventOperationReq:
+    properties:
+      event_type:
+        description: view/click/share/fav/comment
+        type: string
+      tool_id:
+        type: integer
+    type: object
+  protos.DiscoverToolEventOperationResp:
+    type: object
+  protos.DiscoverToolFavoritesOperationReq:
+    properties:
+      status:
+        description: 1-显示 2-隐藏
+        type: integer
+      tool_id:
+        type: integer
+    type: object
+  protos.DiscoverToolFavoritesOperationResp:
+    type: object
+  protos.EventCategoryInfoItem:
+    properties:
+      id:
+        description: 分类ID
+        type: integer
+      img_href:
+        description: 图片地址
+        type: string
+      title:
+        description: 分类标题
+        type: string
+    type: object
+  protos.EventNetWorkInfoItem:
+    properties:
+      chain_id:
+        type: string
+      explorer_url:
+        description: 浏览器地址，例如 https://bscscan.com
+        type: string
+      id:
+        type: integer
+      logo:
+        description: 图标
+        type: string
+      name:
+        type: string
+      rpc_url:
+        description: 默认 RPC，非必填
+        type: string
+      symbol:
+        type: string
+    type: object
+  protos.FavoritesCategoryInfoItem:
+    properties:
+      id:
+        description: 分类ID
+        type: integer
+      img_href:
+        description: 图片地址
+        type: string
+      title:
+        description: 分类标题
+        type: string
+    type: object
+  protos.FavoritesNetWorkInfoItem:
+    properties:
+      chain_id:
+        type: string
+      explorer_url:
+        description: 浏览器地址，例如 https://bscscan.com
+        type: string
+      id:
+        type: integer
+      logo:
+        description: 图标
+        type: string
+      name:
+        type: string
+      rpc_url:
+        description: 默认 RPC，非必填
+        type: string
+      symbol:
+        type: string
+    type: object
+  protos.GetBannerListReq:
+    properties:
+      page:
+        type: integer
+      page_size:
+        type: integer
+    type: object
+  protos.GetBannerListResp:
+    properties:
+      created_time:
+        description: 创建时间
+        type: string
+      expiration_time:
+        description: 过期时间
+        type: string
+      id:
+        description: 主键ID
+        type: integer
+      img_href:
+        description: 图片地址
+        type: string
+      need_login:
+        description: 是否需要登录：1-不需要，2-需要
+        type: integer
+      position:
+        description: 位置 key
+        type: string
+      skip_target:
+        description: 跳转目标：1-H5,2-客服
+        type: integer
+      skip_url:
+        description: 跳转URL
+        type: string
+      sort:
+        description: 顺序
+        type: integer
+      start_at:
+        description: 开始时间
+        type: string
+      status:
+        description: 状态：1-上架，2-下架
+        type: integer
+      title:
+        description: 标题
+        type: string
+      updated_time:
+        description: 更新时间
+        type: string
+    type: object
+  protos.GetDiscoverToolCategoriesListReq:
+    properties:
+      page:
+        type: integer
+      page_size:
+        type: integer
+    type: object
+  protos.GetDiscoverToolCategoriesListResp:
+    properties:
+      created_time:
+        description: 创建时间
+        type: string
+      description:
+        description: 说明
+        type: string
+      id:
+        description: 主键ID
+        type: integer
+      img_href:
+        description: 图片地址
+        type: string
+      is_show:
+        description: 1-显示，2-隐藏
+        type: integer
+      skip_url:
+        description: 跳转URL
+        type: string
+      sort:
+        description: 顺序
+        type: integer
+      status:
+        description: 状态：1-上架，2-下架
+        type: integer
+      title:
+        description: 标题
+        type: string
+      updated_time:
+        description: 更新时间
+        type: string
+    type: object
+  protos.GetDiscoverToolEventListReq:
+    properties:
+      event_type:
+        description: view/click/share/fav/comment
+        type: string
+      page:
+        type: integer
+      page_size:
+        type: integer
+    type: object
+  protos.GetDiscoverToolEventListResp:
+    properties:
+      category_info_ids:
+        description: 关联分类ID列表
+        items:
+          $ref: '#/definitions/protos.EventCategoryInfoItem'
+        type: array
+      community_tutorial:
+        description: 社区教程跳转URL
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      img_href:
+        description: 图片地址
+        type: string
+      service_support:
+        description: 服务支持内容
+        type: string
+      short_desc:
+        description: 简短描述
+        type: string
+      skip_url:
+        description: 跳转URL
+        type: string
+      sort:
+        description: 排序
+        type: integer
+      status:
+        description: 1-显示 2-隐藏
+        type: integer
+      support_network_info_ids:
+        description: 支持的网络ID列表
+        items:
+          $ref: '#/definitions/protos.EventNetWorkInfoItem'
+        type: array
+      thumbnail:
+        description: 缩略图 URL
+        type: string
+      title:
+        description: 标题
+        type: string
+      token:
+        description: token跳转URL
+        type: string
+      tool_id:
+        type: integer
+    type: object
+  protos.GetDiscoverToolFavoritesListReq:
+    properties:
+      net_work_id:
+        description: 网络ID
+        type: integer
+      page:
+        type: integer
+      page_size:
+        type: integer
+    type: object
+  protos.GetDiscoverToolFavoritesListResp:
+    properties:
+      category_info_ids:
+        description: 关联分类ID列表
+        items:
+          $ref: '#/definitions/protos.FavoritesCategoryInfoItem'
+        type: array
+      community_tutorial:
+        description: 社区教程跳转URL
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      img_href:
+        description: 图片地址
+        type: string
+      service_support:
+        description: 服务支持内容
+        type: string
+      short_desc:
+        description: 简短描述
+        type: string
+      skip_url:
+        description: 跳转URL
+        type: string
+      sort:
+        description: 排序
+        type: integer
+      status:
+        description: 1-显示 2-隐藏
+        type: integer
+      support_network_info_ids:
+        description: 支持的网络ID列表
+        items:
+          $ref: '#/definitions/protos.FavoritesNetWorkInfoItem'
+        type: array
+      thumbnail:
+        description: 缩略图 URL
+        type: string
+      title:
+        description: 标题
+        type: string
+      token:
+        description: token跳转URL
+        type: string
+      tool_id:
+        type: integer
+    type: object
+  protos.GetDiscoverToolInfoListReq:
+    properties:
+      categories_id:
+        description: 分类ID
+        type: integer
+      net_work_id:
+        description: 网络ID
+        type: integer
+      page:
+        type: integer
+      page_size:
+        type: integer
+      tag:
+        description: 标签
+        type: string
+      tool_name:
+        description: 工具名称
+        type: string
+    type: object
+  protos.GetDiscoverToolInfoListResp:
+    properties:
+      category_info_ids:
+        description: 关联分类ID列表
+        items:
+          $ref: '#/definitions/protos.CategoryInfoItem'
+        type: array
+      community_tutorial:
+        description: 社区教程跳转URL
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      img_href:
+        description: 图片地址
+        type: string
+      service_support:
+        description: 服务支持内容
+        type: string
+      short_desc:
+        description: 简短描述
+        type: string
+      skip_url:
+        description: 跳转URL
+        type: string
+      sort:
+        description: 排序
+        type: integer
+      status:
+        description: 1-显示 2-隐藏
+        type: integer
+      support_network_info_ids:
+        description: 支持的网络ID列表
+        items:
+          $ref: '#/definitions/protos.NetWorkInfoItem'
+        type: array
+      thumbnail:
+        description: 缩略图 URL
+        type: string
+      title:
+        description: 标题
+        type: string
+      token:
+        description: token跳转URL
+        type: string
+      updated_at:
+        type: string
+    type: object
+  protos.GetDiscoverToolbarListReq:
+    properties:
+      page:
+        type: integer
+      page_size:
+        type: integer
+    type: object
+  protos.GetDiscoverToolbarListResp:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: integer
+      img_href:
+        description: 图片地址
+        type: string
+      sort:
+        description: 排序
+        type: integer
+      tag:
+        description: 标签
+        type: string
+      title:
+        description: 标题
+        type: string
+    type: object
+  protos.GetManageBannerListReq:
+    properties:
+      page:
+        type: integer
+      page_size:
+        type: integer
+    type: object
+  protos.GetManageBannerListResp:
+    properties:
+      created_time:
+        description: 创建时间
+        type: string
+      expiration_time:
+        description: 过期时间
+        type: string
+      id:
+        description: 主键ID
+        type: integer
+      img_href:
+        description: 图片地址
+        type: string
+      need_login:
+        description: 是否需要登录：1-不需要，2-需要
+        type: integer
+      position:
+        description: 位置 key
+        type: string
+      skip_target:
+        description: 跳转目标：1-H5,2-客服
+        type: integer
+      skip_url:
+        description: 跳转URL
+        type: string
+      sort:
+        description: 顺序
+        type: integer
+      start_at:
+        description: 开始时间
+        type: string
+      status:
+        description: 状态：1-上架，2-下架
+        type: integer
+      title:
+        description: 标题
+        type: string
+      updated_time:
+        description: 更新时间
+        type: string
+    type: object
+  protos.GetManageDiscoverToolCategoriesListReq:
+    properties:
+      page:
+        type: integer
+      page_size:
+        type: integer
+    type: object
+  protos.GetManageDiscoverToolCategoriesListResp:
+    properties:
+      created_time:
+        description: 创建时间
+        type: string
+      description:
+        description: 说明
+        type: string
+      id:
+        description: 主键ID
+        type: integer
+      img_href:
+        description: 图片地址
+        type: string
+      is_show:
+        description: 1-显示，2-隐藏
+        type: integer
+      skip_url:
+        description: 跳转URL
+        type: string
+      sort:
+        description: 顺序
+        type: integer
+      status:
+        description: 状态：1-上架，2-下架
+        type: integer
+      title:
+        description: 标题
+        type: string
+      updated_time:
+        description: 更新时间
+        type: string
+    type: object
+  protos.GetManageDiscoverToolInfoListReq:
+    properties:
+      page:
+        type: integer
+      page_size:
+        type: integer
+    type: object
+  protos.GetManageDiscoverToolInfoListResp:
+    properties:
+      category_info_ids:
+        description: 关联分类ID列表
+        items:
+          $ref: '#/definitions/protos.ManageCategoryInfoItem'
+        type: array
+      community_tutorial:
+        description: 社区教程跳转URL
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      img_href:
+        description: 图片地址
+        type: string
+      service_support:
+        description: 服务支持内容
+        type: string
+      short_desc:
+        description: 简短描述
+        type: string
+      skip_url:
+        description: 跳转URL
+        type: string
+      sort:
+        description: 排序
+        type: integer
+      status:
+        description: 1-显示 2-隐藏
+        type: integer
+      support_network_info_ids:
+        description: 支持的网络ID列表
+        items:
+          $ref: '#/definitions/protos.ManageNetWorkInfoItem'
+        type: array
+      tags:
+        description: 标签
+        items:
+          type: string
+        type: array
+      thumbnail:
+        description: 缩略图 URL
+        type: string
+      title:
+        description: 标题
+        type: string
+      token:
+        description: token跳转URL
+        type: string
+      updated_at:
+        type: string
+    type: object
+  protos.GetManageDiscovertoolbarListReq:
+    properties:
+      page:
+        type: integer
+      page_size:
+        type: integer
+    type: object
+  protos.GetManageDiscovertoolbarListResp:
+    properties:
+      id:
+        type: integer
+      img_href:
+        description: 图片地址
+        type: string
+      tag:
+        description: '标签: hot-热门 new-最新'
+        type: string
+      title:
+        description: 标题
+        type: string
+    type: object
+  protos.GetManageNetworkListReq:
+    properties:
+      page:
+        type: integer
+      page_size:
+        type: integer
+    type: object
+  protos.GetManageNetworkListResp:
+    properties:
+      chain_id:
+        description: 链ID，如 1、56、solana
+        type: string
+      created_at:
+        type: string
+      explorer_url:
+        description: 浏览器地址，例如 https://bscscan.com
+        type: string
+      id:
+        type: integer
+      logo:
+        description: 图标
+        type: string
+      name:
+        description: 网络名称，如 Ethereum、BSC、Solana
+        type: string
+      rpc_url:
+        description: 默认 RPC，非必填
+        type: string
+      sort:
+        description: 排序
+        type: integer
+      status:
+        description: 状态 1启用 2禁用
+        type: integer
+      symbol:
+        description: 链主币符号，例如 ETH、BNB、SOL
+        type: string
+    type: object
+  protos.GetNetworkListReq:
+    properties:
+      page:
+        type: integer
+      page_size:
+        type: integer
+    type: object
+  protos.GetNetworkListResp:
+    properties:
+      chain_id:
+        description: 链ID，如 1、56、solana
+        type: string
+      created_at:
+        type: string
+      explorer_url:
+        description: 浏览器地址，例如 https://bscscan.com
+        type: string
+      id:
+        type: integer
+      logo:
+        description: 图标
+        type: string
+      name:
+        description: 网络名称，如 Ethereum、BSC、Solana
+        type: string
+      rpc_url:
+        description: 默认 RPC，非必填
+        type: string
+      sort:
+        description: 排序
+        type: integer
+      status:
+        description: 状态 1启用 2禁用
+        type: integer
+      symbol:
+        description: 链主币符号，例如 ETH、BNB、SOL
+        type: string
+    type: object
+  protos.ManageBannerOperationReq:
+    properties:
+      expiration_time:
+        description: 过期时间
+        type: string
+      id:
+        description: 主键ID
+        type: integer
+      img_href:
+        description: 图片地址
+        type: string
+      need_login:
+        description: 是否需要登录：1-不需要，2-需要
+        type: integer
+      operation_type:
+        description: 操作类型：1-新增，2-编辑，3-删除
+        type: integer
+      position:
+        description: 位置 key
+        type: string
+      skip_target:
+        description: 跳转目标：1-H5,2-客服
+        type: integer
+      skip_url:
+        description: 跳转URL
+        type: string
+      sort:
+        description: 顺序
+        type: integer
+      start_at:
+        description: 开始时间
+        type: string
+      status:
+        description: 状态：1-上架，2-下架
+        type: integer
+      title:
+        description: 标题
+        type: string
+    type: object
+  protos.ManageBannerOperationResp:
+    type: object
+  protos.ManageCategoryInfoItem:
+    properties:
+      id:
+        description: 分类ID
+        type: integer
+      img_href:
+        description: 图片地址
+        type: string
+      title:
+        description: 分类标题
+        type: string
+    type: object
+  protos.ManageDiscoverToolCategoriesOperationReq:
+    properties:
+      description:
+        description: 说明
+        type: string
+      id:
+        description: 主键ID
+        type: integer
+      img_href:
+        description: 图片地址
+        type: string
+      is_show:
+        description: 1-显示，2-隐藏
+        type: integer
+      operation_type:
+        description: 操作类型：1-新增，2-编辑，3-删除
+        type: integer
+      skip_url:
+        description: 跳转URL
+        type: string
+      sort:
+        description: 顺序
+        type: integer
+      status:
+        description: 状态：1-上架，2-下架
+        type: integer
+      title:
+        description: 标题
+        type: string
+    type: object
+  protos.ManageDiscoverToolCategoriesOperationResp:
+    type: object
+  protos.ManageDiscoverToolInfoOperationReq:
+    properties:
+      category_ids:
+        description: 关联分类ID列表
+        items:
+          type: integer
+        type: array
+      community_tutorial:
+        description: 社区教程跳转URL
+        type: string
+      id:
+        type: integer
+      img_href:
+        description: 图片地址
+        type: string
+      operation_type:
+        description: 操作类型：1-新增，2-编辑，3-删除
+        type: integer
+      service_support:
+        description: 服务支持内容
+        type: string
+      short_desc:
+        description: 简短描述
+        type: string
+      skip_url:
+        description: 跳转URL
+        type: string
+      sort:
+        description: 排序
+        type: integer
+      status:
+        description: 1-显示 2-隐藏
+        type: integer
+      support_network_ids:
+        description: 支持的网络ID列表
+        items:
+          type: integer
+        type: array
+      tags:
+        description: '标签: hot-热门 new-最新 top - 置顶'
+        items:
+          type: string
+        type: array
+      thumbnail:
+        description: 缩略图 URL
+        type: string
+      title:
+        description: 标题
+        type: string
+      token:
+        description: token跳转URL
+        type: string
+    type: object
+  protos.ManageDiscoverToolInfoOperationResp:
+    type: object
+  protos.ManageDiscovertoolbarOperationReq:
+    properties:
+      id:
+        type: integer
+      img_href:
+        type: string
+      operation_type:
+        description: 操作类型：1-新增，2-编辑，3-删除
+        type: integer
+      sort:
+        type: integer
+      tag:
+        type: string
+      title:
+        type: string
+    type: object
+  protos.ManageDiscovertoolbarOperationResp:
+    type: object
+  protos.ManageNetWorkInfoItem:
+    properties:
+      chain_id:
+        type: string
+      explorer_url:
+        description: 浏览器地址，例如 https://bscscan.com
+        type: string
+      id:
+        type: integer
+      logo:
+        description: 图标
+        type: string
+      name:
+        type: string
+      rpc_url:
+        description: 默认 RPC，非必填
+        type: string
+      symbol:
+        type: string
+    type: object
+  protos.ManageNetworkOperationReq:
+    properties:
+      chain_id:
+        description: 链ID，如 1、56、solana
+        type: string
+      explorer_url:
+        description: 浏览器地址，例如 https://bscscan.com
+        type: string
+      id:
+        description: 主键ID
+        type: integer
+      logo:
+        description: 图标
+        type: string
+      name:
+        description: 网络名称，如 Ethereum、BSC、Solana
+        type: string
+      operation_type:
+        description: 操作类型：1-新增，2-编辑，3-删除
+        type: integer
+      rpc_url:
+        description: 默认 RPC，非必填
+        type: string
+      sort:
+        description: 排序
+        type: integer
+      status:
+        description: 状态 1启用 2禁用
+        type: integer
+      symbol:
+        description: 链主币符号，例如 ETH、BNB、SOL
+        type: string
+    type: object
+  protos.ManageNetworkOperationResp:
+    type: object
+  protos.NetWorkInfoItem:
+    properties:
+      chain_id:
+        type: string
+      explorer_url:
+        description: 浏览器地址，例如 https://bscscan.com
+        type: string
+      id:
+        type: integer
+      logo:
+        description: 图标
+        type: string
+      name:
+        type: string
+      rpc_url:
+        description: 默认 RPC，非必填
+        type: string
+      symbol:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /api/v1/public/dapp/banner/list:
+    post:
+      consumes:
+      - application/json
+      description: 获取轮播图列表
+      operationId: GetBannerList
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.GetBannerListReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.GetBannerListResp'
+      summary: 获取轮播图列表
+      tags:
+      - 发现页
+  /api/v1/public/dapp/manage/banner/list:
+    post:
+      consumes:
+      - application/json
+      description: 获取轮播图列表
+      operationId: GetManageBannerList
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.GetManageBannerListReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.GetManageBannerListResp'
+      summary: 获取轮播图列表
+      tags:
+      - dapp管理
+  /api/v1/public/dapp/manage/banner/operation:
+    post:
+      consumes:
+      - application/json
+      description: 轮播图操作管理
+      operationId: ManageBannerOperation
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.ManageBannerOperationReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.ManageBannerOperationResp'
+      summary: 轮播图操作管理
+      tags:
+      - dapp管理
+  /api/v1/public/dapp/manage/discover/tool/categories/list:
+    post:
+      consumes:
+      - application/json
+      description: 工具分类列表管理
+      operationId: GetManageDiscoverToolCategoriesList
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.GetManageDiscoverToolCategoriesListReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.GetManageDiscoverToolCategoriesListResp'
+      summary: 工具分类列表管理
+      tags:
+      - 发现页管理
+  /api/v1/public/dapp/manage/discover/tool/categories/operation:
+    post:
+      consumes:
+      - application/json
+      description: 工具分类操作管理
+      operationId: ManageDiscoverToolCategoriesOperation
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.ManageDiscoverToolCategoriesOperationReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.ManageDiscoverToolCategoriesOperationResp'
+      summary: 工具分类操作管理
+      tags:
+      - 发现页管理
+  /api/v1/public/dapp/manage/discover/tool/info/list:
+    post:
+      consumes:
+      - application/json
+      description: 工具列表管理
+      operationId: GetManageDiscoverToolInfoList
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.GetManageDiscoverToolInfoListReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.GetManageDiscoverToolInfoListResp'
+      summary: 工具列表管理
+      tags:
+      - 发现页管理
+  /api/v1/public/dapp/manage/discover/tool/info/operation:
+    post:
+      consumes:
+      - application/json
+      description: 工具操作管理
+      operationId: ManageDiscoverToolInfoOperation
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.ManageDiscoverToolInfoOperationReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.ManageDiscoverToolInfoOperationResp'
+      summary: 工具操作管理
+      tags:
+      - 发现页管理
+  /api/v1/public/dapp/manage/discover/toolbar/list:
+    post:
+      consumes:
+      - application/json
+      description: 发现页工具栏列表管理
+      operationId: GetManageDiscovertoolbarList
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.GetManageDiscovertoolbarListReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.GetManageDiscovertoolbarListResp'
+      summary: 发现页工具栏列表管理
+      tags:
+      - 发现页管理
+  /api/v1/public/dapp/manage/discover/toolbar/operation:
+    post:
+      consumes:
+      - application/json
+      description: 发现页工具栏操作管理
+      operationId: ManageDiscovertoolbarOperation
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.ManageDiscovertoolbarOperationReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.ManageDiscovertoolbarOperationResp'
+      summary: 发现页工具栏操作管理
+      tags:
+      - 发现页管理
+  /api/v1/public/dapp/manage/network/list:
+    post:
+      consumes:
+      - application/json
+      description: 区块网络列表管理
+      operationId: GetManageNetworkList
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.GetManageNetworkListReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.GetManageNetworkListResp'
+      summary: 区块网络列表管理
+      tags:
+      - dapp管理
+  /api/v1/public/dapp/manage/network/operation:
+    post:
+      consumes:
+      - application/json
+      description: 区块网络操作管理
+      operationId: ManageNetworkOperation
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.ManageNetworkOperationReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.ManageNetworkOperationResp'
+      summary: 区块网络操作管理
+      tags:
+      - dapp管理
+  /api/v1/public/dapp/network/list:
+    post:
+      consumes:
+      - application/json
+      description: 获取网络列表
+      operationId: GetNetworkList
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.GetNetworkListReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.GetNetworkListResp'
+      summary: 获取网络列表
+      tags:
+      - 发现页
+  /api/v1/public/dapp/tool/categories/list:
+    post:
+      consumes:
+      - application/json
+      description: 获取工具分类列表
+      operationId: GetDiscoverToolCategoriesList
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.GetDiscoverToolCategoriesListReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.GetDiscoverToolCategoriesListResp'
+      summary: 获取工具分类列表
+      tags:
+      - 发现页
+  /api/v1/public/dapp/tool/event/list:
+    post:
+      consumes:
+      - application/json
+      description: 发现页工具访问记录列表
+      operationId: GetDiscoverToolEventList
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.GetDiscoverToolEventListReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.GetDiscoverToolEventListResp'
+      summary: 发现页工具访问记录列表
+      tags:
+      - 发现页
+  /api/v1/public/dapp/tool/event/operation:
+    post:
+      consumes:
+      - application/json
+      description: 发现页工具访问记录操作
+      operationId: DiscoverToolEventOperation
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.DiscoverToolEventOperationReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.DiscoverToolEventOperationResp'
+      summary: 发现页工具访问记录操作
+      tags:
+      - 发现页
+  /api/v1/public/dapp/tool/favorites/list:
+    post:
+      consumes:
+      - application/json
+      description: 获取发现页工具收藏列表
+      operationId: GetDiscoverToolFavoritesList
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.GetDiscoverToolFavoritesListReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.GetDiscoverToolFavoritesListResp'
+      summary: 获取发现页工具收藏列表
+      tags:
+      - 发现页
+  /api/v1/public/dapp/tool/favorites/operation:
+    post:
+      consumes:
+      - application/json
+      description: 发现页工具收藏操作
+      operationId: DiscoverToolFavoritesOperation
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.DiscoverToolFavoritesOperationReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.DiscoverToolFavoritesOperationResp'
+      summary: 发现页工具收藏操作
+      tags:
+      - 发现页
+  /api/v1/public/dapp/tool/info/list:
+    post:
+      consumes:
+      - application/json
+      description: 获取工具列表
+      operationId: GetDiscoverToolInfoList
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.GetDiscoverToolInfoListReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.GetDiscoverToolInfoListResp'
+      summary: 获取工具列表
+      tags:
+      - 发现页
+  /api/v1/public/dapp/toolbar/list:
+    post:
+      consumes:
+      - application/json
+      description: 获取发现页工具栏列表
+      operationId: GetDiscoverToolbarList
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.GetDiscoverToolbarListReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.GetDiscoverToolbarListResp'
+      summary: 获取发现页工具栏列表
+      tags:
+      - 发现页
+swagger: "2.0"

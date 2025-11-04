@@ -8,6 +8,18 @@ Token:
     Secret: tkXwfkikm90lqdGhxPokdqDgjkNwHeqSoLpUjNvxSXaM
     Expire: 86400
 
+Mysql:
+  Host:  111.119.197.165
+  Port: "13306"
+  User: root
+  Password: dd6688
+  Database: teltlk_dapp
+  InitDB: 0 #mysql是否需要初始化创建和迁移，默认不需要
+  LogLevel: 2 #1=slient 2=error 3=warn 4=info
+  SlowThreshold: 500
+  DBMaxOpenConns: 1000
+  DBMaxIdleConns: 10
+  DBMaxLifeTime: 5
 
 
 #open im

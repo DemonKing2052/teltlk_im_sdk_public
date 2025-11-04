@@ -8,8 +8,8 @@ type ImCommonResp struct {
 
 // 通用翻页
 type Pagination struct {
-	Page     int64 `json:"page,optional,default=1" gorm:"-"`
-	PageSize int64 `json:"page_size,optional,default=20" gorm:"-"`
+	Page     int `json:"page,optional,default=1" gorm:"-"`
+	PageSize int `json:"page_size,optional,default=20" gorm:"-"`
 }
 
 // CommonListResp 通用列表模块

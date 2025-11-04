@@ -4,6 +4,8 @@ var MsgFlags = map[int64]string{
 	SUCCESS: "success",
 	ERROR:   "fail",
 	//
+	ErrorInvalidParam:  "请求参数错误",
+	ErrorTokenNotExist: "请登录后再操作",
 }
 
 type MyError struct {

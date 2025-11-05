@@ -556,6 +556,13 @@ const docTemplate = `{
                 "operationId": "GetDiscoverToolFavoritesList",
                 "parameters": [
                     {
+                        "type": "string",
+                        "description": "token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
                         "description": "请求体",
                         "name": "request",
                         "in": "body",

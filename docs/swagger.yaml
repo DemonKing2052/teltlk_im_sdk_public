@@ -1231,6 +1231,11 @@ paths:
       description: 获取发现页工具收藏列表
       operationId: GetDiscoverToolFavoritesList
       parameters:
+      - description: token
+        in: header
+        name: Authorization
+        required: true
+        type: string
       - description: 请求体
         in: body
         name: request

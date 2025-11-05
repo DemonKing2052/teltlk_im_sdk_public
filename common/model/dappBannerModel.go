@@ -30,7 +30,7 @@ func NewDappBannerModel(conn *gorm.DB) DappBannerModel {
 func (m *defaultDappBannerModel) BannerFindListPage(ctx context.Context, page *utils.PageData) (*[]DappBanner, int64, error) {
 	var resp []DappBanner
 	var count int64
-	err := m.conn.WithContext(ctx).Model(&DappBanner{}).Count(&count).Limit(page.PageSize).Offset(page.Offset).Find(&resp).Error
+	err := m.conn.WithContext(ctx).Table(m.table).Count(&count).Limit(page.PageSize).Offset(page.Offset).Find(&resp).Error
 	switch err {
 	case nil:
 		return &resp, count, nil

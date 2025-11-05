@@ -29,7 +29,7 @@ func NewDappDiscoverToolEventsModel(conn *gorm.DB) DappDiscoverToolEventsModel {
 
 func (m *defaultDappDiscoverToolEventsModel) FindOneByUserIdEventTypeToolId(ctx context.Context, userId, eventType string, toolId int64) (*DappDiscoverToolEvents, error) {
 	var resp DappDiscoverToolEvents
-	err := m.conn.WithContext(ctx).Model(&DappDiscoverToolEvents{}).Where("`user_id` = ? and event_type = ? and `tool_id` = ?", userId, eventType, toolId).Take(&resp).Error
+	err := m.conn.WithContext(ctx).Table(m.table).Where("`user_id` = ? and event_type = ? and `tool_id` = ?", userId, eventType, toolId).Take(&resp).Error
 	switch err {
 	case nil:
 		return &resp, nil

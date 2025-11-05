@@ -30,7 +30,7 @@ func NewDappDiscoverToolCategoriesModel(conn *gorm.DB) DappDiscoverToolCategorie
 func (m *defaultDappDiscoverToolCategoriesModel) DiscoverToolCategoriesFindListPage(ctx context.Context, page *utils.PageData) (*[]DappDiscoverToolCategories, int64, error) {
 	var resp []DappDiscoverToolCategories
 	var count int64
-	err := m.conn.WithContext(ctx).Model(&DappDiscoverToolCategories{}).Count(&count).Limit(page.PageSize).Offset(page.Offset).Find(&resp).Error
+	err := m.conn.WithContext(ctx).Table(m.table).Count(&count).Limit(page.PageSize).Offset(page.Offset).Find(&resp).Error
 	switch err {
 	case nil:
 		return &resp, count, nil

@@ -20,8 +20,11 @@ func OrderRefund(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"code": http.StatusBadRequest, "message": err.Error(), "result": nil})
 		return
 	}
-
-	err := interfaces.RefundOrder(req.OrderId, req.Amount, req.IsModel)
+	model := "dev"
+	if req.IsModel == true {
+		model = "model"
+	}
+	err := interfaces.RefundOrder(req.OrderId, req.Amount, model)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"code": e.ERROR, "message": err.Error()})
 		return
@@ -37,8 +40,11 @@ func OrderWithdrawal(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"code": http.StatusBadRequest, "message": err.Error(), "result": nil})
 		return
 	}
-
-	err := interfaces.PayOutCurrencyForOfficial(req.OpenId, req.CurrencyId, req.Amount, req.IsModel)
+	model := "dev"
+	if req.IsModel == true {
+		model = "model"
+	}
+	err := interfaces.PayOutCurrencyForOfficial(req.OpenId, req.CurrencyId, req.Amount, model)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"code": e.ERROR, "message": err.Error()})
 		return
@@ -57,7 +63,11 @@ func CreateOrder(c *gin.Context) {
 	}
 	// 生成随机订单号
 	outOrderID := utils.GenerateRandomOrderID()
-	res, callBackUrl, err := interfaces.CreateOrder(req.Title, req.CurrencyId, req.Amount, outOrderID, req.IsModel)
+	model := "dev"
+	if req.IsModel == true {
+		model = "model"
+	}
+	res, callBackUrl, err := interfaces.CreateOrder(req.Title, req.CurrencyId, req.Amount, outOrderID, model)
 	// 处理响应结果
 	if res.Data != nil {
 		dataValue, _ := res.Data.(map[string]interface{})
@@ -87,7 +97,11 @@ func GetOrderInfo(c *gin.Context) {
 		c.JSON(400, gin.H{"code": 400, "message": err.Error(), "result": nil})
 		return
 	}
-	res, err := interfaces.QueryOrder(req.OrderId, req.IsModel)
+	model := "dev"
+	if req.IsModel == true {
+		model = "model"
+	}
+	res, err := interfaces.QueryOrder(req.OrderId, model)
 	if err != nil {
 		fmt.Println(err.Error())
 		c.JSON(http.StatusInternalServerError, gin.H{"code": e.ERROR, "message": err.Error(), "data": res})
@@ -104,7 +118,11 @@ func GetOpenIdUserInfo(c *gin.Context) {
 		c.JSON(400, gin.H{"code": 400, "message": err.Error(), "result": nil})
 		return
 	}
-	res, err := interfaces.GetOpenId(req.TeltlkId, req.IsModel)
+	model := "dev"
+	if req.IsModel == true {
+		model = "model"
+	}
+	res, err := interfaces.GetOpenId(req.TeltlkId, model)
 	if res.Data != nil {
 		fmt.Println(err.Error())
 		c.JSON(http.StatusInternalServerError, gin.H{"code": e.ERROR, "message": err.Error(), "data": res})

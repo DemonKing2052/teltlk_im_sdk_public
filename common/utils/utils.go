@@ -3,10 +3,13 @@ package utils
 import (
 	"bytes"
 	"crypto/md5"
+	"crypto/tls"
 	"encoding/hex"
 	"encoding/json"
+	"io"
 	"io/ioutil"
 	"math/rand"
+	"net"
 	"net/http"
 	"strconv"
 	"strings"
@@ -57,6 +60,60 @@ func PostJsonData(url string, params interface{}) ([]byte, error) {
 	body, err := ioutil.ReadAll(request.Body)
 	if err != nil {
 		return nil, err
+	}
+	return body, nil
+}
+
+var (
+	client *http.Client
+)
+
+func RequestsJSON(urls string, user string, pass string, params interface{}, header map[string]string) ([]byte, error) {
+	if client == nil {
+		client = &http.Client{
+			Transport: &http.Transport{
+				DialContext: (&net.Dialer{
+					Timeout:   5 * time.Second,
+					KeepAlive: 5 * time.Second,
+				}).DialContext,
+				MaxIdleConns:        100,                  //最大空闲连接数
+				MaxIdleConnsPerHost: 400,                  //最大与服务器的连接数  默认是2
+				IdleConnTimeout:     300000 * time.Second, //空闲连接保持时间
+
+				TLSClientConfig: &tls.Config{InsecureSkipVerify: true}, // disable verify
+			},
+		}
+	}
+	var req *http.Request
+	if bs, err := json.Marshal(params); err == nil {
+		req, err = http.NewRequest("POST", urls, bytes.NewReader(bs))
+		if err != nil {
+			return []byte(""), err
+		}
+	} else {
+		return []byte(""), err
+	}
+
+	if user != "" {
+		req.SetBasicAuth(user, pass)
+	}
+	req.Header.Set("Content-Type", "application/json")
+	if header != nil {
+		for k, v := range header {
+			req.Header.Set(k, v)
+		}
+	}
+
+	// client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		return []byte(""), err
+	}
+	defer resp.Body.Close()
+
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return []byte(""), err
 	}
 	return body, nil
 }

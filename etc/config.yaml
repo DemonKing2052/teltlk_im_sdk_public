@@ -22,9 +22,19 @@ Mysql:
   DBMaxLifeTime: 5
 
 
-#open im
-TestImUrl: "https://dev.api.teltlk.com/api"
-ImUrl: "https://im.api.teltlk.com/api"
+
+
+TelTlk:
+  #open im
+  TestImUrl: "https://dev.api.teltlk.com/api"
+  imUrl: "https://dev2-im.api.teltlk.com/api"
+  #ImUrl: "http://119.3.242.118:10002/api"
+  #open im model
+  #ImUrl: "https://im.api.teltlk.com/api"
+  #回调自己
+  callBackUrl: "https://dev.shop.teltlk.com:8990"
+  accessKey: teltlk
+  secretKey: mediaSecretkeyAAAAAAAAAAAAAAAA
 #回调自己
 CallBackUrl: "https://dev.api.circle.teltlk.com"
 ClientLogReq:

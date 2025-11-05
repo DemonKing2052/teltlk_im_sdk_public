@@ -13,10 +13,10 @@ import (
 )
 
 // 支付相关-订单退款
-func RefundOrder(orderId, amount string, isModel bool) error {
-	url := configs.Conf.TestImUrl + "/wallet/refund_order"
-	if isModel {
-		url = configs.Conf.ImUrl + "/wallet/refund_order"
+func RefundOrder(orderId, amount string, model string) error {
+	url := configs.Conf.Teltlk.TestImUrl + "/wallet/refund_order"
+	if model == "model" {
+		url = configs.Conf.Teltlk.ImUrl + "/wallet/refund_order"
 	}
 	// 生成随机订单号
 	nonce := utils.GenerateRandomOrderID()
@@ -50,10 +50,10 @@ func RefundOrder(orderId, amount string, isModel bool) error {
 }
 
 // 支付相关-订单提现
-func PayOutCurrencyForOfficial(userCard, currencyid, amount string, isModel bool) error {
-	url := configs.Conf.TestImUrl + "/wallet/pay_out_currency_for_official"
-	if isModel {
-		url = configs.Conf.ImUrl + "/wallet/pay_out_currency_for_official"
+func PayOutCurrencyForOfficial(userCard, currencyid, amount string, model string) error {
+	url := configs.Conf.Teltlk.TestImUrl + "/wallet/pay_out_currency_for_official"
+	if model == "model" {
+		url = configs.Conf.Teltlk.ImUrl + "/wallet/pay_out_currency_for_official"
 	}
 	outOrderID := utils.GenerateRandomOrderID()
 	// 构建请求参数
@@ -97,12 +97,12 @@ func PayOutCurrencyForOfficial(userCard, currencyid, amount string, isModel bool
 }
 
 // 支付相关-创建订单
-func CreateOrder(title string, coinType int64, amount string, nonce string, isModel bool) (*protos.ImCommonResp, string, error) {
-	url := configs.Conf.TestImUrl + "/wallet/create_order"
-	if isModel {
-		url = configs.Conf.ImUrl + "/wallet/create_order"
+func CreateOrder(title string, coinType int64, amount string, nonce string, model string) (*protos.ImCommonResp, string, error) {
+	url := configs.Conf.Teltlk.TestImUrl + "/wallet/create_order"
+	if model == "model" {
+		url = configs.Conf.Teltlk.ImUrl + "/wallet/create_order"
 	}
-	callBackUrl := configs.Conf.CallBackUrl + "/ReceivePayResult"
+	callBackUrl := configs.Conf.Teltlk.CallBackUrl + "/ReceivePayResult"
 	// 构建请求参数
 	params := map[string]any{
 		"title":      title,
@@ -136,10 +136,10 @@ func CreateOrder(title string, coinType int64, amount string, nonce string, isMo
 }
 
 // 支付相关-查询订单
-func QueryOrder(orderId string, isModel bool) (*protos.ImCommonResp, error) {
-	url := configs.Conf.TestImUrl + "/wallet/query_order"
-	if isModel {
-		url = configs.Conf.ImUrl + "/wallet/query_order"
+func QueryOrder(orderId string, model string) (*protos.ImCommonResp, error) {
+	url := configs.Conf.Teltlk.TestImUrl + "/wallet/query_order"
+	if model == "model" {
+		url = configs.Conf.Teltlk.ImUrl + "/wallet/query_order"
 	}
 	nonce := utils.GenerateRandomOrderID()
 	// 构建请求参数
@@ -171,10 +171,10 @@ func QueryOrder(orderId string, isModel bool) (*protos.ImCommonResp, error) {
 }
 
 // 支付相关-查询openid
-func GetOpenId(account string, isModel bool) (*protos.ImCommonResp, error) {
-	url := configs.Conf.TestImUrl + "/official/get_openid"
-	if isModel {
-		url = configs.Conf.ImUrl + "/official/get_openid"
+func GetOpenId(account string, model string) (*protos.ImCommonResp, error) {
+	url := configs.Conf.Teltlk.TestImUrl + "/official/get_openid"
+	if model == "model" {
+		url = configs.Conf.Teltlk.ImUrl + "/official/get_openid"
 	}
 	nonce := utils.GenerateRandomOrderID()
 	// 构建请求参数
@@ -262,10 +262,10 @@ type GetSelfUserInfoResp struct {
 	Data     map[string]interface{} `json:"data" swaggerignore:"true"`
 }
 
-func GetUserInfo(token string, isModel bool) (*GetSelfUserInfoResp, error) {
-	url := configs.Conf.TestImUrl + "/user/get_self_user_info"
-	if isModel {
-		url = configs.Conf.ImUrl + "/user/get_self_user_info"
+func GetUserInfo(token string, model string) (*GetSelfUserInfoResp, error) {
+	url := configs.Conf.Teltlk.TestImUrl + "/user/get_self_user_info"
+	if model == "model" {
+		url = configs.Conf.Teltlk.ImUrl + "/user/get_self_user_info"
 	}
 	nonce := utils.GenerateRandomOrderID()
 	// 构建请求参数

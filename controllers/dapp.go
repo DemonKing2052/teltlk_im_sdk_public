@@ -5,6 +5,7 @@ import (
 	"ImSdk/common/model"
 	"ImSdk/common/protos"
 	"ImSdk/common/utils"
+	"ImSdk/interfaces"
 	"ImSdk/svc"
 	"errors"
 	"fmt"
@@ -303,6 +304,7 @@ func GetDiscoverToolbarList(c *gin.Context) {
 // @ID GetDiscoverToolFavoritesList
 // @Accept json
 // @Produce json
+// @Param Authorization header string true "token"
 // @Param request body protos.GetDiscoverToolFavoritesListReq true "请求体"
 // @Success 200 {object} protos.GetDiscoverToolFavoritesListResp "成功"
 // @Router /api/v1/public/dapp/tool/favorites/list [post]
@@ -313,12 +315,18 @@ func GetDiscoverToolFavoritesList(c *gin.Context) {
 		c.JSON(http.StatusOK, e.GetMsg(e.ErrorInvalidParam))
 		return
 	}
-	uid := c.GetHeader("X_User_Id")
-	if uid == "" {
-		fmt.Errorf("get user failed ! ")
+	token := c.GetHeader("token")
+	usInfo, err := interfaces.GetUserInfo(token, svc.Ctx.Config.Mode)
+	if err != nil {
+		fmt.Errorf("get user failed ! :%s ", err.Error())
 		c.JSON(http.StatusOK, e.GetMsg(e.ErrorTokenNotExist))
 		return
 	}
+	uid := ""
+	if _, ok := usInfo.Data["userID"]; ok {
+		uid = usInfo.Data["userID"].(string)
+	}
+
 	pageData := utils.PageData{Page: int(req.Page), PageSize: int(req.PageSize)}
 	page := utils.GetPageData(pageData)
 
@@ -402,11 +410,16 @@ func DiscoverToolFavoritesOperation(c *gin.Context) {
 		c.JSON(http.StatusOK, e.GetMsg(e.ErrorInvalidParam))
 		return
 	}
-	uid := c.GetHeader("X_User_Id")
-	if uid == "" {
-		fmt.Errorf("get user failed ! ")
+	token := c.GetHeader("token")
+	usInfo, err := interfaces.GetUserInfo(token, svc.Ctx.Config.Mode)
+	if err != nil {
+		fmt.Errorf("get user failed ! :%s ", err.Error())
 		c.JSON(http.StatusOK, e.GetMsg(e.ErrorTokenNotExist))
 		return
+	}
+	uid := ""
+	if _, ok := usInfo.Data["userID"]; ok {
+		uid = usInfo.Data["userID"].(string)
 	}
 	toolInfo, err := svc.Ctx.DappDiscoverToolInfoModel.FindOne(c.Request.Context(), req.ToolId)
 	if err != nil {
@@ -456,11 +469,16 @@ func GetDiscoverToolEventList(c *gin.Context) {
 	if req.EventType == "" {
 		req.EventType = "view"
 	}
-	uid := c.GetHeader("X_User_Id")
-	if uid == "" {
-		fmt.Errorf("get user failed ! ")
+	token := c.GetHeader("token")
+	usInfo, err := interfaces.GetUserInfo(token, svc.Ctx.Config.Mode)
+	if err != nil {
+		fmt.Errorf("get user failed ! :%s ", err.Error())
 		c.JSON(http.StatusOK, e.GetMsg(e.ErrorTokenNotExist))
 		return
+	}
+	uid := ""
+	if _, ok := usInfo.Data["userID"]; ok {
+		uid = usInfo.Data["userID"].(string)
 	}
 	pageData := utils.PageData{Page: int(req.Page), PageSize: int(req.PageSize)}
 	page := utils.GetPageData(pageData)
@@ -545,11 +563,16 @@ func DiscoverToolEventOperation(c *gin.Context) {
 		c.JSON(http.StatusOK, e.GetMsg(e.ErrorInvalidParam))
 		return
 	}
-	uid := c.GetHeader("X_User_Id")
-	if uid == "" {
-		fmt.Errorf("get user failed ! ")
+	token := c.GetHeader("token")
+	usInfo, err := interfaces.GetUserInfo(token, svc.Ctx.Config.Mode)
+	if err != nil {
+		fmt.Errorf("get user failed ! :%s ", err.Error())
 		c.JSON(http.StatusOK, e.GetMsg(e.ErrorTokenNotExist))
 		return
+	}
+	uid := ""
+	if _, ok := usInfo.Data["userID"]; ok {
+		uid = usInfo.Data["userID"].(string)
 	}
 	ip := c.GetHeader("X-Real-IP")
 	if ip == "" {
@@ -559,7 +582,7 @@ func DiscoverToolEventOperation(c *gin.Context) {
 
 	meta := c.GetHeader("meta")
 	now := time.Now()
-	_, err := svc.Ctx.DappDiscoverToolInfoModel.FindOne(c.Request.Context(), req.ToolId)
+	_, err = svc.Ctx.DappDiscoverToolInfoModel.FindOne(c.Request.Context(), req.ToolId)
 	if err != nil {
 		fmt.Println(err.Error())
 		c.JSON(http.StatusOK, gin.H{"code": e.ERROR, "message": err.Error(), "data": nil})

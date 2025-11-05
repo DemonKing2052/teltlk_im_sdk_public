@@ -39,9 +39,12 @@ type Config struct {
 		DBMaxIdleConns int
 		DBMaxLifeTime  int
 	}
-	TestImUrl    string
-	ImUrl        string
-	CallBackUrl  string
+	Teltlk struct {
+		TestImUrl   string
+		ImUrl       string
+		CallBackUrl string
+	}
+
 	ClientLogReq struct {
 		Path string
 	}

@@ -30,7 +30,7 @@ func NewDappDiscoverToolbarModel(conn *gorm.DB) DappDiscoverToolbarModel {
 func (m *defaultDappDiscoverToolbarModel) DiscoverToolbarFindListPage(ctx context.Context, page *utils.PageData) (*[]DappDiscoverToolbar, int64, error) {
 	var resp []DappDiscoverToolbar
 	var count int64
-	err := m.conn.WithContext(ctx).Model(&DappDiscoverToolbar{}).Count(&count).Limit(page.PageSize).Offset(page.Offset).Order("`sort` DESC").Find(&resp).Error
+	err := m.conn.WithContext(ctx).Table(m.table).Count(&count).Limit(page.PageSize).Offset(page.Offset).Order("`sort` DESC").Find(&resp).Error
 	switch err {
 	case nil:
 		return &resp, count, nil

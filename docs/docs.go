@@ -25,7 +25,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "发现页"
+                    "dapp发现页"
                 ],
                 "summary": "获取轮播图列表",
                 "operationId": "GetBannerList",
@@ -130,7 +130,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "发现页管理"
+                    "dapp发现页管理"
                 ],
                 "summary": "工具分类列表管理",
                 "operationId": "GetManageDiscoverToolCategoriesList",
@@ -165,7 +165,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "发现页管理"
+                    "dapp发现页管理"
                 ],
                 "summary": "工具分类操作管理",
                 "operationId": "ManageDiscoverToolCategoriesOperation",
@@ -200,7 +200,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "发现页管理"
+                    "dapp发现页管理"
                 ],
                 "summary": "工具列表管理",
                 "operationId": "GetManageDiscoverToolInfoList",
@@ -235,7 +235,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "发现页管理"
+                    "dapp发现页管理"
                 ],
                 "summary": "工具操作管理",
                 "operationId": "ManageDiscoverToolInfoOperation",
@@ -270,7 +270,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "发现页管理"
+                    "dapp发现页管理"
                 ],
                 "summary": "发现页工具栏列表管理",
                 "operationId": "GetManageDiscovertoolbarList",
@@ -305,7 +305,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "发现页管理"
+                    "dapp发现页管理"
                 ],
                 "summary": "发现页工具栏操作管理",
                 "operationId": "ManageDiscovertoolbarOperation",
@@ -410,7 +410,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "发现页"
+                    "dapp发现页"
                 ],
                 "summary": "获取网络列表",
                 "operationId": "GetNetworkList",
@@ -445,7 +445,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "发现页"
+                    "dapp发现页"
                 ],
                 "summary": "获取工具分类列表",
                 "operationId": "GetDiscoverToolCategoriesList",
@@ -480,7 +480,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "发现页"
+                    "dapp发现页"
                 ],
                 "summary": "发现页工具访问记录列表",
                 "operationId": "GetDiscoverToolEventList",
@@ -515,7 +515,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "发现页"
+                    "dapp发现页"
                 ],
                 "summary": "发现页工具访问记录操作",
                 "operationId": "DiscoverToolEventOperation",
@@ -550,7 +550,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "发现页"
+                    "dapp发现页"
                 ],
                 "summary": "获取发现页工具收藏列表",
                 "operationId": "GetDiscoverToolFavoritesList",
@@ -592,7 +592,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "发现页"
+                    "dapp发现页"
                 ],
                 "summary": "发现页工具收藏操作",
                 "operationId": "DiscoverToolFavoritesOperation",
@@ -627,7 +627,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "发现页"
+                    "dapp发现页"
                 ],
                 "summary": "获取工具列表",
                 "operationId": "GetDiscoverToolInfoList",
@@ -662,7 +662,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "发现页"
+                    "dapp发现页"
                 ],
                 "summary": "获取发现页工具栏列表",
                 "operationId": "GetDiscoverToolbarList",

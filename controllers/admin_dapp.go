@@ -154,7 +154,7 @@ func ManageBannerOperation(c *gin.Context) {
 
 // @Summary 工具分类列表管理
 // @Description 工具分类列表管理
-// @Tags 发现页管理
+// @Tags dapp发现页管理
 // @ID GetManageDiscoverToolCategoriesList
 // @Accept json
 // @Produce json
@@ -205,7 +205,7 @@ func GetManageDiscoverToolCategoriesList(c *gin.Context) {
 
 // @Summary 工具分类操作管理
 // @Description 工具分类操作管理
-// @Tags 发现页管理
+// @Tags dapp发现页管理
 // @ID ManageDiscoverToolCategoriesOperation
 // @Accept json
 // @Produce json
@@ -417,7 +417,7 @@ func ManageNetworkOperation(c *gin.Context) {
 
 // @Summary 工具列表管理
 // @Description 工具列表管理
-// @Tags 发现页管理
+// @Tags dapp发现页管理
 // @ID GetManageDiscoverToolInfoList
 // @Accept json
 // @Produce json
@@ -498,7 +498,7 @@ func GetManageDiscoverToolInfoList(c *gin.Context) {
 
 // @Summary 工具操作管理
 // @Description 工具操作管理
-// @Tags 发现页管理
+// @Tags dapp发现页管理
 // @ID ManageDiscoverToolInfoOperation
 // @Accept json
 // @Produce json
@@ -592,7 +592,7 @@ func ManageDiscoverToolInfoOperation(c *gin.Context) {
 
 // @Summary 发现页工具栏列表管理
 // @Description 发现页工具栏列表管理
-// @Tags 发现页管理
+// @Tags dapp发现页管理
 // @ID GetManageDiscovertoolbarList
 // @Accept json
 // @Produce json
@@ -636,7 +636,7 @@ func GetManageDiscovertoolbarList(c *gin.Context) {
 
 // @Summary 发现页工具栏操作管理
 // @Description 发现页工具栏操作管理
-// @Tags 发现页管理
+// @Tags dapp发现页管理
 // @ID ManageDiscovertoolbarOperation
 // @Accept json
 // @Produce json

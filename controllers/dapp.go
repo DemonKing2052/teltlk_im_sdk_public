@@ -17,7 +17,7 @@ import (
 
 // @Summary 获取轮播图列表
 // @Description 获取轮播图列表
-// @Tags 发现页
+// @Tags dapp发现页
 // @ID GetBannerList
 // @Accept json
 // @Produce json
@@ -71,7 +71,7 @@ func GetBannerList(c *gin.Context) {
 
 // @Summary 获取工具分类列表
 // @Description 获取工具分类列表
-// @Tags 发现页
+// @Tags dapp发现页
 // @ID GetDiscoverToolCategoriesList
 // @Accept json
 // @Produce json
@@ -122,7 +122,7 @@ func GetDiscoverToolCategoriesList(c *gin.Context) {
 
 // @Summary 获取网络列表
 // @Description 获取网络列表
-// @Tags 发现页
+// @Tags dapp发现页
 // @ID GetNetworkList
 // @Accept json
 // @Produce json
@@ -173,7 +173,7 @@ func GetNetworkList(c *gin.Context) {
 
 // @Summary 获取工具列表
 // @Description 获取工具列表
-// @Tags 发现页
+// @Tags dapp发现页
 // @ID GetDiscoverToolInfoList
 // @Accept json
 // @Produce json
@@ -253,7 +253,7 @@ func GetDiscoverToolInfoList(c *gin.Context) {
 
 // @Summary 获取发现页工具栏列表
 // @Description 获取发现页工具栏列表
-// @Tags 发现页
+// @Tags dapp发现页
 // @ID GetDiscoverToolbarList
 // @Accept json
 // @Produce json
@@ -300,7 +300,7 @@ func GetDiscoverToolbarList(c *gin.Context) {
 
 // @Summary 获取发现页工具收藏列表
 // @Description 获取发现页工具收藏列表
-// @Tags 发现页
+// @Tags dapp发现页
 // @ID GetDiscoverToolFavoritesList
 // @Accept json
 // @Produce json
@@ -396,7 +396,7 @@ func GetDiscoverToolFavoritesList(c *gin.Context) {
 
 // @Summary 发现页工具收藏操作
 // @Description 发现页工具收藏操作
-// @Tags 发现页
+// @Tags dapp发现页
 // @ID DiscoverToolFavoritesOperation
 // @Accept json
 // @Produce json
@@ -452,7 +452,7 @@ func DiscoverToolFavoritesOperation(c *gin.Context) {
 
 // @Summary 发现页工具访问记录列表
 // @Description 发现页工具访问记录列表
-// @Tags 发现页
+// @Tags dapp发现页
 // @ID GetDiscoverToolEventList
 // @Accept json
 // @Produce json
@@ -549,7 +549,7 @@ func GetDiscoverToolEventList(c *gin.Context) {
 
 // @Summary 发现页工具访问记录操作
 // @Description 发现页工具访问记录操作
-// @Tags 发现页
+// @Tags dapp发现页
 // @ID DiscoverToolEventOperation
 // @Accept json
 // @Produce json

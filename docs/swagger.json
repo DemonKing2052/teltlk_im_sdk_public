@@ -14,7 +14,7 @@
                     "application/json"
                 ],
                 "tags": [
-                    "发现页"
+                    "dapp发现页"
                 ],
                 "summary": "获取轮播图列表",
                 "operationId": "GetBannerList",
@@ -119,7 +119,7 @@
                     "application/json"
                 ],
                 "tags": [
-                    "发现页管理"
+                    "dapp发现页管理"
                 ],
                 "summary": "工具分类列表管理",
                 "operationId": "GetManageDiscoverToolCategoriesList",
@@ -154,7 +154,7 @@
                     "application/json"
                 ],
                 "tags": [
-                    "发现页管理"
+                    "dapp发现页管理"
                 ],
                 "summary": "工具分类操作管理",
                 "operationId": "ManageDiscoverToolCategoriesOperation",
@@ -189,7 +189,7 @@
                     "application/json"
                 ],
                 "tags": [
-                    "发现页管理"
+                    "dapp发现页管理"
                 ],
                 "summary": "工具列表管理",
                 "operationId": "GetManageDiscoverToolInfoList",
@@ -224,7 +224,7 @@
                     "application/json"
                 ],
                 "tags": [
-                    "发现页管理"
+                    "dapp发现页管理"
                 ],
                 "summary": "工具操作管理",
                 "operationId": "ManageDiscoverToolInfoOperation",
@@ -259,7 +259,7 @@
                     "application/json"
                 ],
                 "tags": [
-                    "发现页管理"
+                    "dapp发现页管理"
                 ],
                 "summary": "发现页工具栏列表管理",
                 "operationId": "GetManageDiscovertoolbarList",
@@ -294,7 +294,7 @@
                     "application/json"
                 ],
                 "tags": [
-                    "发现页管理"
+                    "dapp发现页管理"
                 ],
                 "summary": "发现页工具栏操作管理",
                 "operationId": "ManageDiscovertoolbarOperation",
@@ -399,7 +399,7 @@
                     "application/json"
                 ],
                 "tags": [
-                    "发现页"
+                    "dapp发现页"
                 ],
                 "summary": "获取网络列表",
                 "operationId": "GetNetworkList",
@@ -434,7 +434,7 @@
                     "application/json"
                 ],
                 "tags": [
-                    "发现页"
+                    "dapp发现页"
                 ],
                 "summary": "获取工具分类列表",
                 "operationId": "GetDiscoverToolCategoriesList",
@@ -469,7 +469,7 @@
                     "application/json"
                 ],
                 "tags": [
-                    "发现页"
+                    "dapp发现页"
                 ],
                 "summary": "发现页工具访问记录列表",
                 "operationId": "GetDiscoverToolEventList",
@@ -504,7 +504,7 @@
                     "application/json"
                 ],
                 "tags": [
-                    "发现页"
+                    "dapp发现页"
                 ],
                 "summary": "发现页工具访问记录操作",
                 "operationId": "DiscoverToolEventOperation",
@@ -539,7 +539,7 @@
                     "application/json"
                 ],
                 "tags": [
-                    "发现页"
+                    "dapp发现页"
                 ],
                 "summary": "获取发现页工具收藏列表",
                 "operationId": "GetDiscoverToolFavoritesList",
@@ -581,7 +581,7 @@
                     "application/json"
                 ],
                 "tags": [
-                    "发现页"
+                    "dapp发现页"
                 ],
                 "summary": "发现页工具收藏操作",
                 "operationId": "DiscoverToolFavoritesOperation",
@@ -616,7 +616,7 @@
                     "application/json"
                 ],
                 "tags": [
-                    "发现页"
+                    "dapp发现页"
                 ],
                 "summary": "获取工具列表",
                 "operationId": "GetDiscoverToolInfoList",
@@ -651,7 +651,7 @@
                     "application/json"
                 ],
                 "tags": [
-                    "发现页"
+                    "dapp发现页"
                 ],
                 "summary": "获取发现页工具栏列表",
                 "operationId": "GetDiscoverToolbarList",

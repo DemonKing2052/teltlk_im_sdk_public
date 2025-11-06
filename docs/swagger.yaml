@@ -901,7 +901,7 @@ paths:
             $ref: '#/definitions/protos.GetBannerListResp'
       summary: 获取轮播图列表
       tags:
-      - 发现页
+      - dapp发现页
   /api/v1/public/dapp/manage/banner/list:
     post:
       consumes:
@@ -970,7 +970,7 @@ paths:
             $ref: '#/definitions/protos.GetManageDiscoverToolCategoriesListResp'
       summary: 工具分类列表管理
       tags:
-      - 发现页管理
+      - dapp发现页管理
   /api/v1/public/dapp/manage/discover/tool/categories/operation:
     post:
       consumes:
@@ -993,7 +993,7 @@ paths:
             $ref: '#/definitions/protos.ManageDiscoverToolCategoriesOperationResp'
       summary: 工具分类操作管理
       tags:
-      - 发现页管理
+      - dapp发现页管理
   /api/v1/public/dapp/manage/discover/tool/info/list:
     post:
       consumes:
@@ -1016,7 +1016,7 @@ paths:
             $ref: '#/definitions/protos.GetManageDiscoverToolInfoListResp'
       summary: 工具列表管理
       tags:
-      - 发现页管理
+      - dapp发现页管理
   /api/v1/public/dapp/manage/discover/tool/info/operation:
     post:
       consumes:
@@ -1039,7 +1039,7 @@ paths:
             $ref: '#/definitions/protos.ManageDiscoverToolInfoOperationResp'
       summary: 工具操作管理
       tags:
-      - 发现页管理
+      - dapp发现页管理
   /api/v1/public/dapp/manage/discover/toolbar/list:
     post:
       consumes:
@@ -1062,7 +1062,7 @@ paths:
             $ref: '#/definitions/protos.GetManageDiscovertoolbarListResp'
       summary: 发现页工具栏列表管理
       tags:
-      - 发现页管理
+      - dapp发现页管理
   /api/v1/public/dapp/manage/discover/toolbar/operation:
     post:
       consumes:
@@ -1085,7 +1085,7 @@ paths:
             $ref: '#/definitions/protos.ManageDiscovertoolbarOperationResp'
       summary: 发现页工具栏操作管理
       tags:
-      - 发现页管理
+      - dapp发现页管理
   /api/v1/public/dapp/manage/network/list:
     post:
       consumes:
@@ -1154,7 +1154,7 @@ paths:
             $ref: '#/definitions/protos.GetNetworkListResp'
       summary: 获取网络列表
       tags:
-      - 发现页
+      - dapp发现页
   /api/v1/public/dapp/tool/categories/list:
     post:
       consumes:
@@ -1177,7 +1177,7 @@ paths:
             $ref: '#/definitions/protos.GetDiscoverToolCategoriesListResp'
       summary: 获取工具分类列表
       tags:
-      - 发现页
+      - dapp发现页
   /api/v1/public/dapp/tool/event/list:
     post:
       consumes:
@@ -1200,7 +1200,7 @@ paths:
             $ref: '#/definitions/protos.GetDiscoverToolEventListResp'
       summary: 发现页工具访问记录列表
       tags:
-      - 发现页
+      - dapp发现页
   /api/v1/public/dapp/tool/event/operation:
     post:
       consumes:
@@ -1223,7 +1223,7 @@ paths:
             $ref: '#/definitions/protos.DiscoverToolEventOperationResp'
       summary: 发现页工具访问记录操作
       tags:
-      - 发现页
+      - dapp发现页
   /api/v1/public/dapp/tool/favorites/list:
     post:
       consumes:
@@ -1251,7 +1251,7 @@ paths:
             $ref: '#/definitions/protos.GetDiscoverToolFavoritesListResp'
       summary: 获取发现页工具收藏列表
       tags:
-      - 发现页
+      - dapp发现页
   /api/v1/public/dapp/tool/favorites/operation:
     post:
       consumes:
@@ -1274,7 +1274,7 @@ paths:
             $ref: '#/definitions/protos.DiscoverToolFavoritesOperationResp'
       summary: 发现页工具收藏操作
       tags:
-      - 发现页
+      - dapp发现页
   /api/v1/public/dapp/tool/info/list:
     post:
       consumes:
@@ -1297,7 +1297,7 @@ paths:
             $ref: '#/definitions/protos.GetDiscoverToolInfoListResp'
       summary: 获取工具列表
       tags:
-      - 发现页
+      - dapp发现页
   /api/v1/public/dapp/toolbar/list:
     post:
       consumes:
@@ -1320,5 +1320,5 @@ paths:
             $ref: '#/definitions/protos.GetDiscoverToolbarListResp'
       summary: 获取发现页工具栏列表
       tags:
-      - 发现页
+      - dapp发现页
 swagger: "2.0"

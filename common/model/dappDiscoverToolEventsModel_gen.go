@@ -45,13 +45,13 @@ func newDappDiscoverToolEventsModel(conn *gorm.DB) *defaultDappDiscoverToolEvent
 }
 
 func (m *defaultDappDiscoverToolEventsModel) Insert(ctx context.Context, data *DappDiscoverToolEvents) error {
-	err := m.conn.WithContext(ctx).Create(&data).Error
+	err := m.conn.WithContext(ctx).Table(m.table).Create(&data).Error
 	return err
 }
 
 func (m *defaultDappDiscoverToolEventsModel) FindOne(ctx context.Context, id int64) (*DappDiscoverToolEvents, error) {
 	var resp DappDiscoverToolEvents
-	err := m.conn.WithContext(ctx).Model(&DappDiscoverToolEvents{}).Where("`id` = ?", id).Take(&resp).Error
+	err := m.conn.WithContext(ctx).Table(m.table).Where("`id` = ?", id).Take(&resp).Error
 	switch err {
 	case nil:
 		return &resp, nil
@@ -63,12 +63,12 @@ func (m *defaultDappDiscoverToolEventsModel) FindOne(ctx context.Context, id int
 }
 
 func (m *defaultDappDiscoverToolEventsModel) Update(ctx context.Context, session *gorm.DB, data *DappDiscoverToolEvents) error {
-	err := m.conn.WithContext(ctx).Updates(data).Error
+	err := m.conn.WithContext(ctx).Table(m.table).Updates(data).Error
 	return err
 }
 
 func (m *defaultDappDiscoverToolEventsModel) Delete(ctx context.Context, session *gorm.DB, id int64) error {
-	err := m.conn.WithContext(ctx).Delete(&DappDiscoverToolEvents{}, id).Error
+	err := m.conn.WithContext(ctx).Table(m.table).Where("`id` = ?", id).Delete(nil).Error
 
 	return err
 }

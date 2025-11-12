@@ -23,7 +23,7 @@ import (
 // @Router /api/v1/public/dapp/manage/banner/list [post]
 func GetManageBannerList(c *gin.Context) {
 	var req protos.GetManageBannerListReq
-	if err := c.ShouldBind(&req); err != nil {
+	if err := c.ShouldBindJSON(&req); err != nil {
 		fmt.Printf("获取请求参数：%s\n", err.Error())
 		c.JSON(http.StatusOK, e.GetMsg(e.ErrorInvalidParam))
 		return
@@ -77,7 +77,7 @@ func GetManageBannerList(c *gin.Context) {
 // @Router /api/v1/public/dapp/manage/banner/operation [post]
 func ManageBannerOperation(c *gin.Context) {
 	var req protos.ManageBannerOperationReq
-	if err := c.ShouldBind(&req); err != nil {
+	if err := c.ShouldBindJSON(&req); err != nil {
 		fmt.Printf("获取请求参数：%s\n", err.Error())
 		c.JSON(http.StatusOK, e.GetMsg(e.ErrorInvalidParam))
 		return
@@ -99,10 +99,22 @@ func ManageBannerOperation(c *gin.Context) {
 			Status:         req.Status,
 			NeedLogin:      req.NeedLogin,
 			SkipTarget:     req.SkipTarget,
-			StartAt:        req.StartAt,
-			ExpirationTime: req.ExpirationTime,
+			StartAt:        nil,
+			ExpirationTime: nil,
 			CreatedTime:    now,
 			UpdatedTime:    now,
+		}
+		if req.StartAt != "" {
+			startAt, err := utils.StrToTime(req.StartAt)
+			if err == nil {
+				pro.StartAt = &startAt
+			}
+		}
+		if req.ExpirationTime != "" {
+			expirationTimeAt, err := utils.StrToTime(req.ExpirationTime)
+			if err == nil {
+				pro.ExpirationTime = &expirationTimeAt
+			}
 		}
 		err := svc.Ctx.DappBannerModel.Insert(c.Request.Context(), &pro)
 		if err != nil {
@@ -125,9 +137,21 @@ func ManageBannerOperation(c *gin.Context) {
 		pro.Status = req.Status
 		pro.NeedLogin = req.NeedLogin
 		pro.SkipTarget = req.SkipTarget
-		pro.StartAt = req.StartAt
-		pro.ExpirationTime = req.ExpirationTime
 		pro.UpdatedTime = now
+
+		if req.StartAt != "" {
+			startAt, err := utils.StrToTime(req.StartAt)
+			if err == nil {
+				pro.StartAt = &startAt
+			}
+		}
+		if req.ExpirationTime != "" {
+			expirationTimeAt, err := utils.StrToTime(req.ExpirationTime)
+			if err == nil {
+				pro.ExpirationTime = &expirationTimeAt
+			}
+		}
+
 		err = svc.Ctx.DappBannerModel.Update(c.Request.Context(), nil, pro)
 		if err != nil {
 			fmt.Println(err.Error())
@@ -163,7 +187,7 @@ func ManageBannerOperation(c *gin.Context) {
 // @Router /api/v1/public/dapp/manage/discover/tool/categories/list [post]
 func GetManageDiscoverToolCategoriesList(c *gin.Context) {
 	var req protos.GetManageDiscoverToolCategoriesListReq
-	if err := c.ShouldBind(&req); err != nil {
+	if err := c.ShouldBindJSON(&req); err != nil {
 		fmt.Printf("获取请求参数：%s\n", err.Error())
 		c.JSON(http.StatusOK, e.GetMsg(e.ErrorInvalidParam))
 		return
@@ -214,7 +238,7 @@ func GetManageDiscoverToolCategoriesList(c *gin.Context) {
 // @Router /api/v1/public/dapp/manage/discover/tool/categories/operation [post]
 func ManageDiscoverToolCategoriesOperation(c *gin.Context) {
 	var req protos.ManageDiscoverToolCategoriesOperationReq
-	if err := c.ShouldBind(&req); err != nil {
+	if err := c.ShouldBindJSON(&req); err != nil {
 		fmt.Printf("获取请求参数：%s\n", err.Error())
 		c.JSON(http.StatusOK, e.GetMsg(e.ErrorInvalidParam))
 		return
@@ -294,7 +318,7 @@ func ManageDiscoverToolCategoriesOperation(c *gin.Context) {
 // @Router /api/v1/public/dapp/manage/network/list [post]
 func GetManageNetworkList(c *gin.Context) {
 	var req protos.GetManageNetworkListReq
-	if err := c.ShouldBind(&req); err != nil {
+	if err := c.ShouldBindJSON(&req); err != nil {
 		fmt.Printf("获取请求参数：%s\n", err.Error())
 		c.JSON(http.StatusOK, e.GetMsg(e.ErrorInvalidParam))
 		return
@@ -345,7 +369,7 @@ func GetManageNetworkList(c *gin.Context) {
 // @Router /api/v1/public/dapp/manage/network/operation [post]
 func ManageNetworkOperation(c *gin.Context) {
 	var req protos.ManageNetworkOperationReq
-	if err := c.ShouldBind(&req); err != nil {
+	if err := c.ShouldBindJSON(&req); err != nil {
 		fmt.Printf("获取请求参数：%s\n", err.Error())
 		c.JSON(http.StatusOK, e.GetMsg(e.ErrorInvalidParam))
 		return
@@ -426,7 +450,7 @@ func ManageNetworkOperation(c *gin.Context) {
 // @Router /api/v1/public/dapp/manage/discover/tool/info/list [post]
 func GetManageDiscoverToolInfoList(c *gin.Context) {
 	var req protos.GetManageDiscoverToolInfoListReq
-	if err := c.ShouldBind(&req); err != nil {
+	if err := c.ShouldBindJSON(&req); err != nil {
 		fmt.Printf("获取请求参数：%s\n", err.Error())
 		c.JSON(http.StatusOK, e.GetMsg(e.ErrorInvalidParam))
 		return
@@ -434,7 +458,7 @@ func GetManageDiscoverToolInfoList(c *gin.Context) {
 	pageData := utils.PageData{Page: int(req.Page), PageSize: int(req.PageSize)}
 	page := utils.GetPageData(pageData)
 
-	list, count, err := svc.Ctx.DappDiscoverToolInfoModel.DiscoverToolInfoFindListPage(c.Request.Context(), "", 0, 0, "", &page)
+	list, count, err := svc.Ctx.DappDiscoverToolInfoModel.DiscoverToolInfoFindListPage(c.Request.Context(), "", 0, req.CategoriesId, "", &page)
 	if err != nil {
 		fmt.Println(err.Error())
 		c.JSON(http.StatusOK, gin.H{"code": e.ERROR, "message": err.Error(), "data": nil})
@@ -507,11 +531,12 @@ func GetManageDiscoverToolInfoList(c *gin.Context) {
 // @Router /api/v1/public/dapp/manage/discover/tool/info/operation [post]
 func ManageDiscoverToolInfoOperation(c *gin.Context) {
 	var req protos.ManageDiscoverToolInfoOperationReq
-	if err := c.ShouldBind(&req); err != nil {
+	if err := c.ShouldBindJSON(&req); err != nil {
 		fmt.Printf("获取请求参数：%s\n", err.Error())
 		c.JSON(http.StatusOK, e.GetMsg(e.ErrorInvalidParam))
 		return
 	}
+	fmt.Printf("获取请求参数：%+v\n", req)
 	now := time.Now()
 	const (
 		DiscoverToolInfoOperationTypeAdd    = 1
@@ -520,8 +545,8 @@ func ManageDiscoverToolInfoOperation(c *gin.Context) {
 	)
 	switch req.OperationType {
 	case DiscoverToolInfoOperationTypeAdd:
+
 		pro := model.DappDiscoverToolInfo{
-			Id:                req.Id,
 			CategoryIds:       req.CategoryIds,
 			Title:             req.Title,
 			ShortDesc:         req.ShortDesc,
@@ -601,7 +626,7 @@ func ManageDiscoverToolInfoOperation(c *gin.Context) {
 // @Router /api/v1/public/dapp/manage/discover/toolbar/list [post]
 func GetManageDiscovertoolbarList(c *gin.Context) {
 	var req protos.GetManageDiscovertoolbarListReq
-	if err := c.ShouldBind(&req); err != nil {
+	if err := c.ShouldBindJSON(&req); err != nil {
 		fmt.Printf("获取请求参数：%s\n", err.Error())
 		c.JSON(http.StatusOK, e.GetMsg(e.ErrorInvalidParam))
 		return
@@ -621,6 +646,7 @@ func GetManageDiscovertoolbarList(c *gin.Context) {
 			Id:      v.Id,
 			Title:   v.Title,
 			ImgHref: v.ImgHref,
+			Tag:     v.Tag,
 		}
 		data = append(data, r)
 	}
@@ -645,7 +671,7 @@ func GetManageDiscovertoolbarList(c *gin.Context) {
 // @Router /api/v1/public/dapp/manage/discover/toolbar/operation [post]
 func ManageDiscovertoolbarOperation(c *gin.Context) {
 	var req protos.ManageDiscovertoolbarOperationReq
-	if err := c.ShouldBind(&req); err != nil {
+	if err := c.ShouldBindJSON(&req); err != nil {
 		fmt.Printf("获取请求参数：%s\n", err.Error())
 		c.JSON(http.StatusOK, e.GetMsg(e.ErrorInvalidParam))
 		return

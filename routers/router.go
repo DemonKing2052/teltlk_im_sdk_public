@@ -3,36 +3,42 @@ package routers
 import (
 	"ImSdk/controllers"
 	"ImSdk/middleware"
-
 	"github.com/gin-gonic/gin"
 )
 
 func InitRouter() *gin.Engine {
 
 	router := gin.Default()
-	router.Use(middleware.GinCors())
 	api := router.Group("/api/v1/public")
 	//////////////////////////////////////////////////////////////////////////////////////////////////////
-	////////////////////////////////////////dapp发现页面接口//////////////////////////////////////////////////////////////
+	////////////////////////////////////////dapp发现页面管理接口//////////////////////////////////////////////////////////////
+	dappAdmin := api.Group("/dapp")
+	dappAdmin.POST("/manage/banner/list", controllers.GetManageBannerList)
+	dappAdmin.POST("/manage/banner/operation", controllers.ManageBannerOperation)
+
+	dappAdmin.POST("/manage/discover/tool/categories/list", controllers.GetManageDiscoverToolCategoriesList)
+	dappAdmin.POST("/manage/discover/tool/categories/operation", controllers.ManageDiscoverToolCategoriesOperation)
+
+	dappAdmin.POST("/manage/network/list", controllers.GetManageNetworkList)
+	dappAdmin.POST("/manage/network/operation", controllers.ManageNetworkOperation)
+
+	dappAdmin.POST("/manage/discover/tool/info/list", controllers.GetManageDiscoverToolInfoList)
+	dappAdmin.POST("/manage/discover/tool/info/operation", controllers.ManageDiscoverToolInfoOperation)
+
+	dappAdmin.POST("/manage/discover/toolbar/list", controllers.GetManageDiscovertoolbarList)
+	dappAdmin.POST("/manage/discover/toolbar/operation", controllers.ManageDiscovertoolbarOperation)
+	//////////////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////dapp发现页面管理接口//////////////////////////////////////////////////////////////
+	router.Use(middleware.Cors())
 	dapp := api.Group("/dapp")
-	dapp.POST("/manage/banner/list", controllers.GetManageBannerList)
-	dapp.POST("/manage/banner/operation", controllers.ManageBannerOperation)
 	dapp.POST("/banner/list", controllers.GetBannerList)
 
-	dapp.POST("/manage/discover/tool/categories/list", controllers.GetManageDiscoverToolCategoriesList)
-	dapp.POST("/manage/discover/tool/categories/operation", controllers.ManageDiscoverToolCategoriesOperation)
 	dapp.POST("/discover/tool/categories/list", controllers.GetDiscoverToolCategoriesList)
 
-	dapp.POST("/manage/network/list", controllers.GetManageNetworkList)
-	dapp.POST("/manage/network/operation", controllers.ManageNetworkOperation)
 	dapp.POST("/network/list", controllers.GetNetworkList)
 
-	dapp.POST("/manage/discover/tool/info/list", controllers.GetManageDiscoverToolInfoList)
-	dapp.POST("/manage/discover/tool/info/operation", controllers.ManageDiscoverToolInfoOperation)
 	dapp.POST("/discover/tool/info/list", controllers.GetDiscoverToolInfoList)
 
-	dapp.POST("/manage/discover/toolbar/list", controllers.GetManageDiscovertoolbarList)
-	dapp.POST("/manage/discover/toolbar/operation", controllers.ManageDiscovertoolbarOperation)
 	dapp.POST("/discover/toolbar/list", controllers.GetDiscoverToolbarList)
 
 	dapp.POST("/discover/tool/favorites/list", controllers.GetDiscoverToolFavoritesList)
@@ -42,6 +48,7 @@ func InitRouter() *gin.Engine {
 	dapp.POST("/discover/tool/event/operation", controllers.DiscoverToolEventOperation)
 	//////////////////////////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////前端日志上报//////////////////////////////////////////////////////////////
+
 	api.POST("/client/log/reporting", controllers.ClientLogReporting)
 	api.POST("/client/log", controllers.GetClientLogReporting)
 	//////////////////////////////////////////////////////////////////////////////////////////////////////

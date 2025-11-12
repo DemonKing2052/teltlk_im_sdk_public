@@ -42,13 +42,13 @@ func newDappDiscoverToolbarModel(conn *gorm.DB) *defaultDappDiscoverToolbarModel
 }
 
 func (m *defaultDappDiscoverToolbarModel) Insert(ctx context.Context, data *DappDiscoverToolbar) error {
-	err := m.conn.WithContext(ctx).Create(&data).Error
+	err := m.conn.WithContext(ctx).Table(m.table).Create(&data).Error
 	return err
 }
 
 func (m *defaultDappDiscoverToolbarModel) FindOne(ctx context.Context, id int64) (*DappDiscoverToolbar, error) {
 	var resp DappDiscoverToolbar
-	err := m.conn.WithContext(ctx).Model(&DappDiscoverToolbar{}).Where("`id` = ?", id).Take(&resp).Error
+	err := m.conn.WithContext(ctx).Table(m.table).Where("`id` = ?", id).Take(&resp).Error
 	switch err {
 	case nil:
 		return &resp, nil
@@ -60,12 +60,12 @@ func (m *defaultDappDiscoverToolbarModel) FindOne(ctx context.Context, id int64)
 }
 
 func (m *defaultDappDiscoverToolbarModel) Update(ctx context.Context, session *gorm.DB, data *DappDiscoverToolbar) error {
-	err := m.conn.WithContext(ctx).Updates(data).Error
+	err := m.conn.WithContext(ctx).Table(m.table).Updates(data).Error
 	return err
 }
 
 func (m *defaultDappDiscoverToolbarModel) Delete(ctx context.Context, session *gorm.DB, id int64) error {
-	err := m.conn.WithContext(ctx).Delete(&DappDiscoverToolbar{}, id).Error
+	err := m.conn.WithContext(ctx).Table(m.table).Where("`id` = ?", id).Delete(nil).Error
 
 	return err
 }

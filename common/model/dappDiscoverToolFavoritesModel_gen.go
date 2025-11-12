@@ -29,8 +29,8 @@ type (
 		Id                int64     `json:"id" gorm:"column:id"`
 		UserId            string    `json:"user_id" gorm:"column:user_id"`
 		ToolId            int64     `json:"tool_id" gorm:"column:tool_id"`
-		SupportNetworkIds []int64   `json:"support_network_ids" gorm:"column:support_network_ids"` // 支持的网络ID列表
-		Status            int64     `json:"status" gorm:"column:status"`                           // 1-显示 2-隐藏
+		SupportNetworkIds []int64   `json:"support_network_ids" gorm:"serializer:json;column:support_network_ids"` // 支持的网络ID列表
+		Status            int64     `json:"status" gorm:"column:status"`                                           // 1-显示 2-隐藏
 		CreatedAt         time.Time `json:"created_at" gorm:"column:created_at"`
 	}
 )
@@ -43,13 +43,13 @@ func newDappDiscoverToolFavoritesModel(conn *gorm.DB) *defaultDappDiscoverToolFa
 }
 
 func (m *defaultDappDiscoverToolFavoritesModel) Insert(ctx context.Context, data *DappDiscoverToolFavorites) error {
-	err := m.conn.WithContext(ctx).Create(&data).Error
+	err := m.conn.WithContext(ctx).Table(m.table).Create(&data).Error
 	return err
 }
 
 func (m *defaultDappDiscoverToolFavoritesModel) FindOne(ctx context.Context, id int64) (*DappDiscoverToolFavorites, error) {
 	var resp DappDiscoverToolFavorites
-	err := m.conn.WithContext(ctx).Model(&DappDiscoverToolFavorites{}).Where("`id` = ?", id).Take(&resp).Error
+	err := m.conn.WithContext(ctx).Table(m.table).Where("`id` = ?", id).Take(&resp).Error
 	switch err {
 	case nil:
 		return &resp, nil
@@ -62,7 +62,7 @@ func (m *defaultDappDiscoverToolFavoritesModel) FindOne(ctx context.Context, id 
 
 func (m *defaultDappDiscoverToolFavoritesModel) FindOneByUserIdToolId(ctx context.Context, userId string, toolId int64) (*DappDiscoverToolFavorites, error) {
 	var resp DappDiscoverToolFavorites
-	err := m.conn.WithContext(ctx).Model(&DappDiscoverToolFavorites{}).Where("`user_id` = ? and `tool_id` = ?", userId, toolId).Take(&resp).Error
+	err := m.conn.WithContext(ctx).Table(m.table).Where("`user_id` = ? and `tool_id` = ?", userId, toolId).Take(&resp).Error
 	switch err {
 	case nil:
 		return &resp, nil
@@ -74,12 +74,12 @@ func (m *defaultDappDiscoverToolFavoritesModel) FindOneByUserIdToolId(ctx contex
 }
 
 func (m *defaultDappDiscoverToolFavoritesModel) Update(ctx context.Context, session *gorm.DB, data *DappDiscoverToolFavorites) error {
-	err := m.conn.WithContext(ctx).Updates(data).Error
+	err := m.conn.WithContext(ctx).Table(m.table).Updates(data).Error
 	return err
 }
 
 func (m *defaultDappDiscoverToolFavoritesModel) Delete(ctx context.Context, session *gorm.DB, id int64) error {
-	err := m.conn.WithContext(ctx).Delete(&DappDiscoverToolFavorites{}, id).Error
+	err := m.conn.WithContext(ctx).Table(m.table).Where("`id` = ?", id).Delete(nil).Error
 
 	return err
 }

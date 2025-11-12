@@ -46,13 +46,13 @@ func newDappDiscoverToolCategoriesModel(conn *gorm.DB) *defaultDappDiscoverToolC
 }
 
 func (m *defaultDappDiscoverToolCategoriesModel) Insert(ctx context.Context, data *DappDiscoverToolCategories) error {
-	err := m.conn.WithContext(ctx).Create(&data).Error
+	err := m.conn.WithContext(ctx).Table(m.table).Create(&data).Error
 	return err
 }
 
 func (m *defaultDappDiscoverToolCategoriesModel) FindOne(ctx context.Context, id int64) (*DappDiscoverToolCategories, error) {
 	var resp DappDiscoverToolCategories
-	err := m.conn.WithContext(ctx).Model(&DappDiscoverToolCategories{}).Where("`id` = ?", id).Take(&resp).Error
+	err := m.conn.WithContext(ctx).Table(m.table).Where("`id` = ?", id).Take(&resp).Error
 	switch err {
 	case nil:
 		return &resp, nil
@@ -64,12 +64,12 @@ func (m *defaultDappDiscoverToolCategoriesModel) FindOne(ctx context.Context, id
 }
 
 func (m *defaultDappDiscoverToolCategoriesModel) Update(ctx context.Context, session *gorm.DB, data *DappDiscoverToolCategories) error {
-	err := m.conn.WithContext(ctx).Updates(data).Error
+	err := m.conn.WithContext(ctx).Table(m.table).Updates(data).Error
 	return err
 }
 
 func (m *defaultDappDiscoverToolCategoriesModel) Delete(ctx context.Context, session *gorm.DB, id int64) error {
-	err := m.conn.WithContext(ctx).Delete(&DappDiscoverToolCategories{}, id).Error
+	err := m.conn.WithContext(ctx).Table(m.table).Where("`id` = ?", id).Delete(nil).Error
 
 	return err
 }

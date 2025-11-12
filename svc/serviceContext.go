@@ -82,7 +82,9 @@ func InitDbClient(c configs.Config) *gorm.DB {
 	if err != nil {
 		panic(fmt.Sprintf("init mysql failed,err:%v", err))
 	}
-
+	if c.Mode != "model" {
+		dB = dB.Debug()
+	}
 	sqlDB, err := dB.DB()
 	if err != nil {
 		panic(fmt.Sprintf("init gorm failed,err:%v", err))

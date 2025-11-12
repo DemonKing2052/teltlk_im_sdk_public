@@ -50,13 +50,13 @@ func newDappBannerModel(conn *gorm.DB) *defaultDappBannerModel {
 }
 
 func (m *defaultDappBannerModel) Insert(ctx context.Context, data *DappBanner) error {
-	err := m.conn.WithContext(ctx).Create(&data).Error
+	err := m.conn.WithContext(ctx).Table(m.table).Create(&data).Error
 	return err
 }
 
 func (m *defaultDappBannerModel) FindOne(ctx context.Context, id int64) (*DappBanner, error) {
 	var resp DappBanner
-	err := m.conn.WithContext(ctx).Model(&DappBanner{}).Where("`id` = ?", id).Take(&resp).Error
+	err := m.conn.WithContext(ctx).Table(m.table).Where("`id` = ?", id).Take(&resp).Error
 	switch err {
 	case nil:
 		return &resp, nil
@@ -68,12 +68,12 @@ func (m *defaultDappBannerModel) FindOne(ctx context.Context, id int64) (*DappBa
 }
 
 func (m *defaultDappBannerModel) Update(ctx context.Context, session *gorm.DB, data *DappBanner) error {
-	err := m.conn.WithContext(ctx).Updates(data).Error
+	err := m.conn.WithContext(ctx).Table(m.table).Updates(data).Error
 	return err
 }
 
 func (m *defaultDappBannerModel) Delete(ctx context.Context, session *gorm.DB, id int64) error {
-	err := m.conn.WithContext(ctx).Delete(&DappBanner{}, id).Error
+	err := m.conn.WithContext(ctx).Table(m.table).Where("`id` = ?", id).Delete(nil).Error
 
 	return err
 }

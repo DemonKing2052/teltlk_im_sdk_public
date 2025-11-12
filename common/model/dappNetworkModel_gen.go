@@ -46,13 +46,13 @@ func newDappNetworkModel(conn *gorm.DB) *defaultDappNetworkModel {
 }
 
 func (m *defaultDappNetworkModel) Insert(ctx context.Context, data *DappNetwork) error {
-	err := m.conn.WithContext(ctx).Create(&data).Error
+	err := m.conn.WithContext(ctx).Table(m.table).Create(&data).Error
 	return err
 }
 
 func (m *defaultDappNetworkModel) FindOne(ctx context.Context, id int64) (*DappNetwork, error) {
 	var resp DappNetwork
-	err := m.conn.WithContext(ctx).Model(&DappNetwork{}).Where("`id` = ?", id).Take(&resp).Error
+	err := m.conn.WithContext(ctx).Table(m.table).Where("`id` = ?", id).Take(&resp).Error
 	switch err {
 	case nil:
 		return &resp, nil
@@ -64,12 +64,12 @@ func (m *defaultDappNetworkModel) FindOne(ctx context.Context, id int64) (*DappN
 }
 
 func (m *defaultDappNetworkModel) Update(ctx context.Context, session *gorm.DB, data *DappNetwork) error {
-	err := m.conn.WithContext(ctx).Updates(data).Error
+	err := m.conn.WithContext(ctx).Table(m.table).Updates(data).Error
 	return err
 }
 
 func (m *defaultDappNetworkModel) Delete(ctx context.Context, session *gorm.DB, id int64) error {
-	err := m.conn.WithContext(ctx).Delete(&DappNetwork{}, id).Error
+	err := m.conn.WithContext(ctx).Table(m.table).Where("`id` = ?", id).Delete(nil).Error
 
 	return err
 }

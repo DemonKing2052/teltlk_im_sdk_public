@@ -26,7 +26,7 @@ import (
 // @Router /api/v1/public/dapp/banner/list [post]
 func GetBannerList(c *gin.Context) {
 	var req protos.GetBannerListReq
-	if err := c.ShouldBind(&req); err != nil {
+	if err := c.ShouldBindJSON(&req); err != nil {
 		fmt.Printf("获取请求参数：%s\n", err.Error())
 		c.JSON(http.StatusOK, e.GetMsg(e.ErrorInvalidParam))
 		return
@@ -80,7 +80,7 @@ func GetBannerList(c *gin.Context) {
 // @Router /api/v1/public/dapp/tool/categories/list [post]
 func GetDiscoverToolCategoriesList(c *gin.Context) {
 	var req protos.GetDiscoverToolCategoriesListReq
-	if err := c.ShouldBind(&req); err != nil {
+	if err := c.ShouldBindJSON(&req); err != nil {
 		fmt.Printf("获取请求参数：%s\n", err.Error())
 		c.JSON(http.StatusOK, e.GetMsg(e.ErrorInvalidParam))
 		return
@@ -131,7 +131,7 @@ func GetDiscoverToolCategoriesList(c *gin.Context) {
 // @Router /api/v1/public/dapp/network/list [post]
 func GetNetworkList(c *gin.Context) {
 	var req protos.GetNetworkListReq
-	if err := c.ShouldBind(&req); err != nil {
+	if err := c.ShouldBindJSON(&req); err != nil {
 		fmt.Printf("获取请求参数：%s\n", err.Error())
 		c.JSON(http.StatusOK, e.GetMsg(e.ErrorInvalidParam))
 		return
@@ -182,7 +182,7 @@ func GetNetworkList(c *gin.Context) {
 // @Router /api/v1/public/dapp/tool/info/list [post]
 func GetDiscoverToolInfoList(c *gin.Context) {
 	var req protos.GetDiscoverToolInfoListReq
-	if err := c.ShouldBind(&req); err != nil {
+	if err := c.ShouldBindJSON(&req); err != nil {
 		fmt.Printf("获取请求参数：%s\n", err.Error())
 		c.JSON(http.StatusOK, e.GetMsg(e.ErrorInvalidParam))
 		return
@@ -262,7 +262,7 @@ func GetDiscoverToolInfoList(c *gin.Context) {
 // @Router /api/v1/public/dapp/toolbar/list [post]
 func GetDiscoverToolbarList(c *gin.Context) {
 	var req protos.GetDiscoverToolbarListReq
-	if err := c.ShouldBind(&req); err != nil {
+	if err := c.ShouldBindJSON(&req); err != nil {
 		fmt.Printf("获取请求参数：%s\n", err.Error())
 		c.JSON(http.StatusOK, e.GetMsg(e.ErrorInvalidParam))
 		return
@@ -310,7 +310,7 @@ func GetDiscoverToolbarList(c *gin.Context) {
 // @Router /api/v1/public/dapp/tool/favorites/list [post]
 func GetDiscoverToolFavoritesList(c *gin.Context) {
 	var req protos.GetDiscoverToolFavoritesListReq
-	if err := c.ShouldBind(&req); err != nil {
+	if err := c.ShouldBindJSON(&req); err != nil {
 		fmt.Printf("获取请求参数：%s\n", err.Error())
 		c.JSON(http.StatusOK, e.GetMsg(e.ErrorInvalidParam))
 		return
@@ -405,7 +405,7 @@ func GetDiscoverToolFavoritesList(c *gin.Context) {
 // @Router /api/v1/public/dapp/tool/favorites/operation [post]
 func DiscoverToolFavoritesOperation(c *gin.Context) {
 	var req protos.DiscoverToolFavoritesOperationReq
-	if err := c.ShouldBind(&req); err != nil {
+	if err := c.ShouldBindJSON(&req); err != nil {
 		fmt.Printf("获取请求参数：%s\n", err.Error())
 		c.JSON(http.StatusOK, e.GetMsg(e.ErrorInvalidParam))
 		return
@@ -461,7 +461,7 @@ func DiscoverToolFavoritesOperation(c *gin.Context) {
 // @Router /api/v1/public/dapp/tool/event/list [post]
 func GetDiscoverToolEventList(c *gin.Context) {
 	var req protos.GetDiscoverToolEventListReq
-	if err := c.ShouldBind(&req); err != nil {
+	if err := c.ShouldBindJSON(&req); err != nil {
 		fmt.Printf("获取请求参数：%s\n", err.Error())
 		c.JSON(http.StatusOK, e.GetMsg(e.ErrorInvalidParam))
 		return
@@ -558,7 +558,7 @@ func GetDiscoverToolEventList(c *gin.Context) {
 // @Router /api/v1/public/dapp/tool/event/operation [post]
 func DiscoverToolEventOperation(c *gin.Context) {
 	var req protos.DiscoverToolEventOperationReq
-	if err := c.ShouldBind(&req); err != nil {
+	if err := c.ShouldBindJSON(&req); err != nil {
 		fmt.Printf("获取请求参数：%s\n", err.Error())
 		c.JSON(http.StatusOK, e.GetMsg(e.ErrorInvalidParam))
 		return

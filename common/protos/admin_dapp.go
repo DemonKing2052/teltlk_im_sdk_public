@@ -23,18 +23,18 @@ type GetManageBannerListResp struct {
 }
 
 type ManageBannerOperationReq struct {
-	OperationType  int64      `json:"operation_type" `  // 操作类型：1-新增，2-编辑，3-删除
-	Id             int64      `json:"id " `             // 主键ID
-	Position       string     `json:"position" `        // 位置 key
-	Title          string     `json:"title" `           // 标题
-	Sort           int64      `json:"sort" `            // 顺序
-	SkipUrl        string     `json:"skip_url" `        // 跳转URL
-	ImgHref        string     `json:"img_href" `        // 图片地址
-	Status         uint64     `json:"status" `          // 状态：1-上架，2-下架
-	NeedLogin      uint64     `json:"need_login" `      // 是否需要登录：1-不需要，2-需要
-	SkipTarget     uint64     `json:"skip_target" `     // 跳转目标：1-H5,2-客服
-	StartAt        *time.Time `json:"start_at" `        // 开始时间
-	ExpirationTime *time.Time `json:"expiration_time" ` // 过期时间
+	OperationType  int64  `json:"operation_type" `  // 操作类型：1-新增，2-编辑，3-删除
+	Id             int64  `json:"id" `              // 主键ID
+	Position       string `json:"position" `        // 位置 key
+	Title          string `json:"title" `           // 标题
+	Sort           int64  `json:"sort" `            // 顺序
+	SkipUrl        string `json:"skip_url" `        // 跳转URL
+	ImgHref        string `json:"img_href" `        // 图片地址
+	Status         uint64 `json:"status" `          // 状态：1-上架，2-下架
+	NeedLogin      uint64 `json:"need_login" `      // 是否需要登录：1-不需要，2-需要
+	SkipTarget     uint64 `json:"skip_target" `     // 跳转目标：1-H5,2-客服
+	StartAt        string `json:"start_at" `        // 开始时间
+	ExpirationTime string `json:"expiration_time" ` // 过期时间
 
 }
 type ManageBannerOperationResp struct {
@@ -57,7 +57,7 @@ type GetManageDiscoverToolCategoriesListResp struct {
 }
 type ManageDiscoverToolCategoriesOperationReq struct {
 	OperationType int64  `json:"operation_type" ` // 操作类型：1-新增，2-编辑，3-删除
-	Id            int64  `json:"id " `            // 主键ID
+	Id            int64  `json:"id" `             // 主键ID
 	Title         string `json:"title"`           // 标题
 	Sort          int64  `json:"sort" `           // 顺序
 	SkipUrl       string `json:"skip_url" `       // 跳转URL
@@ -87,7 +87,7 @@ type GetManageNetworkListResp struct {
 
 type ManageNetworkOperationReq struct {
 	OperationType int64  `json:"operation_type" ` // 操作类型：1-新增，2-编辑，3-删除
-	Id            int64  `json:"id " `            // 主键ID
+	Id            int64  `json:"id" `             // 主键ID
 	Name          string `json:"name" `           // 网络名称，如 Ethereum、BSC、Solana
 	ChainId       string `json:"chain_id" `       // 链ID，如 1、56、solana
 	Symbol        string `json:"symbol" `         // 链主币符号，例如 ETH、BNB、SOL
@@ -100,6 +100,7 @@ type ManageNetworkOperationReq struct {
 type ManageNetworkOperationResp struct {
 }
 type GetManageDiscoverToolInfoListReq struct {
+	CategoriesId int64 `json:"categories_id"` //分类ID
 	Pagination
 }
 type ManageCategoryInfoItem struct {

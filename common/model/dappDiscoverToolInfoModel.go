@@ -49,7 +49,7 @@ func (m *defaultDappDiscoverToolInfoModel) DiscoverToolInfoFindListPage(ctx cont
 	}
 	var resp []DappDiscoverToolInfo
 	var count int64
-	err := m.conn.WithContext(ctx).Table(m.table).Count(&count).Limit(page.PageSize).Offset(page.Offset).Find(&resp).Error
+	err := m.conn.WithContext(ctx).Table(m.table).Where(where, args...).Count(&count).Limit(page.PageSize).Offset(page.Offset).Find(&resp).Error
 	switch err {
 	case nil:
 		return &resp, count, nil

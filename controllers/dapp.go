@@ -77,7 +77,7 @@ func GetBannerList(c *gin.Context) {
 // @Produce json
 // @Param request body protos.GetDiscoverToolCategoriesListReq true "请求体"
 // @Success 200 {object} protos.GetDiscoverToolCategoriesListResp "成功"
-// @Router /api/v1/public/dapp/tool/categories/list [post]
+// @Router /api/v1/public/dapp/discover/tool/categories/list [post]
 func GetDiscoverToolCategoriesList(c *gin.Context) {
 	var req protos.GetDiscoverToolCategoriesListReq
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -179,7 +179,7 @@ func GetNetworkList(c *gin.Context) {
 // @Produce json
 // @Param request body protos.GetDiscoverToolInfoListReq true "请求体"
 // @Success 200 {object} protos.GetDiscoverToolInfoListResp "成功"
-// @Router /api/v1/public/dapp/tool/info/list [post]
+// @Router /api/v1/public/dapp/discover/tool/info/list [post]
 func GetDiscoverToolInfoList(c *gin.Context) {
 	var req protos.GetDiscoverToolInfoListReq
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -259,7 +259,7 @@ func GetDiscoverToolInfoList(c *gin.Context) {
 // @Produce json
 // @Param request body protos.GetDiscoverToolbarListReq true "请求体"
 // @Success 200 {object} protos.GetDiscoverToolbarListResp "成功"
-// @Router /api/v1/public/dapp/toolbar/list [post]
+// @Router /api/v1/public/dapp/discover/toolbar/list [post]
 func GetDiscoverToolbarList(c *gin.Context) {
 	var req protos.GetDiscoverToolbarListReq
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -307,7 +307,7 @@ func GetDiscoverToolbarList(c *gin.Context) {
 // @Param Authorization header string true "token"
 // @Param request body protos.GetDiscoverToolFavoritesListReq true "请求体"
 // @Success 200 {object} protos.GetDiscoverToolFavoritesListResp "成功"
-// @Router /api/v1/public/dapp/tool/favorites/list [post]
+// @Router /api/v1/public/dapp/discover/tool/favorites/list [post]
 func GetDiscoverToolFavoritesList(c *gin.Context) {
 	var req protos.GetDiscoverToolFavoritesListReq
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -402,7 +402,7 @@ func GetDiscoverToolFavoritesList(c *gin.Context) {
 // @Produce json
 // @Param request body protos.DiscoverToolFavoritesOperationReq true "请求体"
 // @Success 200 {object} protos.DiscoverToolFavoritesOperationResp "成功"
-// @Router /api/v1/public/dapp/tool/favorites/operation [post]
+// @Router /api/v1/public/dapp/discover/tool/favorites/operation [post]
 func DiscoverToolFavoritesOperation(c *gin.Context) {
 	var req protos.DiscoverToolFavoritesOperationReq
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -458,7 +458,7 @@ func DiscoverToolFavoritesOperation(c *gin.Context) {
 // @Produce json
 // @Param request body protos.GetDiscoverToolEventListReq true "请求体"
 // @Success 200 {object} protos.GetDiscoverToolEventListResp "成功"
-// @Router /api/v1/public/dapp/tool/event/list [post]
+// @Router /api/v1/public/dapp/discover/tool/event/list [post]
 func GetDiscoverToolEventList(c *gin.Context) {
 	var req protos.GetDiscoverToolEventListReq
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -555,7 +555,7 @@ func GetDiscoverToolEventList(c *gin.Context) {
 // @Produce json
 // @Param request body protos.DiscoverToolEventOperationReq true "请求体"
 // @Success 200 {object} protos.DiscoverToolEventOperationResp "成功"
-// @Router /api/v1/public/dapp/tool/event/operation [post]
+// @Router /api/v1/public/dapp/discover/tool/event/operation [post]
 func DiscoverToolEventOperation(c *gin.Context) {
 	var req protos.DiscoverToolEventOperationReq
 	if err := c.ShouldBindJSON(&req); err != nil {

@@ -487,6 +487,9 @@ definitions:
     type: object
   protos.GetManageDiscoverToolInfoListReq:
     properties:
+      categories_id:
+        description: 分类ID
+        type: integer
       page:
         type: integer
       page_size:
@@ -902,6 +905,172 @@ paths:
       summary: 获取轮播图列表
       tags:
       - dapp发现页
+  /api/v1/public/dapp/discover/tool/categories/list:
+    post:
+      consumes:
+      - application/json
+      description: 获取工具分类列表
+      operationId: GetDiscoverToolCategoriesList
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.GetDiscoverToolCategoriesListReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.GetDiscoverToolCategoriesListResp'
+      summary: 获取工具分类列表
+      tags:
+      - dapp发现页
+  /api/v1/public/dapp/discover/tool/event/list:
+    post:
+      consumes:
+      - application/json
+      description: 发现页工具访问记录列表
+      operationId: GetDiscoverToolEventList
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.GetDiscoverToolEventListReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.GetDiscoverToolEventListResp'
+      summary: 发现页工具访问记录列表
+      tags:
+      - dapp发现页
+  /api/v1/public/dapp/discover/tool/event/operation:
+    post:
+      consumes:
+      - application/json
+      description: 发现页工具访问记录操作
+      operationId: DiscoverToolEventOperation
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.DiscoverToolEventOperationReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.DiscoverToolEventOperationResp'
+      summary: 发现页工具访问记录操作
+      tags:
+      - dapp发现页
+  /api/v1/public/dapp/discover/tool/favorites/list:
+    post:
+      consumes:
+      - application/json
+      description: 获取发现页工具收藏列表
+      operationId: GetDiscoverToolFavoritesList
+      parameters:
+      - description: token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.GetDiscoverToolFavoritesListReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.GetDiscoverToolFavoritesListResp'
+      summary: 获取发现页工具收藏列表
+      tags:
+      - dapp发现页
+  /api/v1/public/dapp/discover/tool/favorites/operation:
+    post:
+      consumes:
+      - application/json
+      description: 发现页工具收藏操作
+      operationId: DiscoverToolFavoritesOperation
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.DiscoverToolFavoritesOperationReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.DiscoverToolFavoritesOperationResp'
+      summary: 发现页工具收藏操作
+      tags:
+      - dapp发现页
+  /api/v1/public/dapp/discover/tool/info/list:
+    post:
+      consumes:
+      - application/json
+      description: 获取工具列表
+      operationId: GetDiscoverToolInfoList
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.GetDiscoverToolInfoListReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.GetDiscoverToolInfoListResp'
+      summary: 获取工具列表
+      tags:
+      - dapp发现页
+  /api/v1/public/dapp/discover/toolbar/list:
+    post:
+      consumes:
+      - application/json
+      description: 获取发现页工具栏列表
+      operationId: GetDiscoverToolbarList
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.GetDiscoverToolbarListReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.GetDiscoverToolbarListResp'
+      summary: 获取发现页工具栏列表
+      tags:
+      - dapp发现页
   /api/v1/public/dapp/manage/banner/list:
     post:
       consumes:
@@ -1153,172 +1322,6 @@ paths:
           schema:
             $ref: '#/definitions/protos.GetNetworkListResp'
       summary: 获取网络列表
-      tags:
-      - dapp发现页
-  /api/v1/public/dapp/tool/categories/list:
-    post:
-      consumes:
-      - application/json
-      description: 获取工具分类列表
-      operationId: GetDiscoverToolCategoriesList
-      parameters:
-      - description: 请求体
-        in: body
-        name: request
-        required: true
-        schema:
-          $ref: '#/definitions/protos.GetDiscoverToolCategoriesListReq'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 成功
-          schema:
-            $ref: '#/definitions/protos.GetDiscoverToolCategoriesListResp'
-      summary: 获取工具分类列表
-      tags:
-      - dapp发现页
-  /api/v1/public/dapp/tool/event/list:
-    post:
-      consumes:
-      - application/json
-      description: 发现页工具访问记录列表
-      operationId: GetDiscoverToolEventList
-      parameters:
-      - description: 请求体
-        in: body
-        name: request
-        required: true
-        schema:
-          $ref: '#/definitions/protos.GetDiscoverToolEventListReq'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 成功
-          schema:
-            $ref: '#/definitions/protos.GetDiscoverToolEventListResp'
-      summary: 发现页工具访问记录列表
-      tags:
-      - dapp发现页
-  /api/v1/public/dapp/tool/event/operation:
-    post:
-      consumes:
-      - application/json
-      description: 发现页工具访问记录操作
-      operationId: DiscoverToolEventOperation
-      parameters:
-      - description: 请求体
-        in: body
-        name: request
-        required: true
-        schema:
-          $ref: '#/definitions/protos.DiscoverToolEventOperationReq'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 成功
-          schema:
-            $ref: '#/definitions/protos.DiscoverToolEventOperationResp'
-      summary: 发现页工具访问记录操作
-      tags:
-      - dapp发现页
-  /api/v1/public/dapp/tool/favorites/list:
-    post:
-      consumes:
-      - application/json
-      description: 获取发现页工具收藏列表
-      operationId: GetDiscoverToolFavoritesList
-      parameters:
-      - description: token
-        in: header
-        name: Authorization
-        required: true
-        type: string
-      - description: 请求体
-        in: body
-        name: request
-        required: true
-        schema:
-          $ref: '#/definitions/protos.GetDiscoverToolFavoritesListReq'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 成功
-          schema:
-            $ref: '#/definitions/protos.GetDiscoverToolFavoritesListResp'
-      summary: 获取发现页工具收藏列表
-      tags:
-      - dapp发现页
-  /api/v1/public/dapp/tool/favorites/operation:
-    post:
-      consumes:
-      - application/json
-      description: 发现页工具收藏操作
-      operationId: DiscoverToolFavoritesOperation
-      parameters:
-      - description: 请求体
-        in: body
-        name: request
-        required: true
-        schema:
-          $ref: '#/definitions/protos.DiscoverToolFavoritesOperationReq'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 成功
-          schema:
-            $ref: '#/definitions/protos.DiscoverToolFavoritesOperationResp'
-      summary: 发现页工具收藏操作
-      tags:
-      - dapp发现页
-  /api/v1/public/dapp/tool/info/list:
-    post:
-      consumes:
-      - application/json
-      description: 获取工具列表
-      operationId: GetDiscoverToolInfoList
-      parameters:
-      - description: 请求体
-        in: body
-        name: request
-        required: true
-        schema:
-          $ref: '#/definitions/protos.GetDiscoverToolInfoListReq'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 成功
-          schema:
-            $ref: '#/definitions/protos.GetDiscoverToolInfoListResp'
-      summary: 获取工具列表
-      tags:
-      - dapp发现页
-  /api/v1/public/dapp/toolbar/list:
-    post:
-      consumes:
-      - application/json
-      description: 获取发现页工具栏列表
-      operationId: GetDiscoverToolbarList
-      parameters:
-      - description: 请求体
-        in: body
-        name: request
-        required: true
-        schema:
-          $ref: '#/definitions/protos.GetDiscoverToolbarListReq'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 成功
-          schema:
-            $ref: '#/definitions/protos.GetDiscoverToolbarListResp'
-      summary: 获取发现页工具栏列表
       tags:
       - dapp发现页
 swagger: "2.0"

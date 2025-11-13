@@ -50,6 +50,258 @@ const docTemplate = `{
                 }
             }
         },
+        "/api/v1/public/dapp/discover/tool/categories/list": {
+            "post": {
+                "description": "获取工具分类列表",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "dapp发现页"
+                ],
+                "summary": "获取工具分类列表",
+                "operationId": "GetDiscoverToolCategoriesList",
+                "parameters": [
+                    {
+                        "description": "请求体",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/protos.GetDiscoverToolCategoriesListReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "schema": {
+                            "$ref": "#/definitions/protos.GetDiscoverToolCategoriesListResp"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/public/dapp/discover/tool/event/list": {
+            "post": {
+                "description": "发现页工具访问记录列表",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "dapp发现页"
+                ],
+                "summary": "发现页工具访问记录列表",
+                "operationId": "GetDiscoverToolEventList",
+                "parameters": [
+                    {
+                        "description": "请求体",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/protos.GetDiscoverToolEventListReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "schema": {
+                            "$ref": "#/definitions/protos.GetDiscoverToolEventListResp"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/public/dapp/discover/tool/event/operation": {
+            "post": {
+                "description": "发现页工具访问记录操作",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "dapp发现页"
+                ],
+                "summary": "发现页工具访问记录操作",
+                "operationId": "DiscoverToolEventOperation",
+                "parameters": [
+                    {
+                        "description": "请求体",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/protos.DiscoverToolEventOperationReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "schema": {
+                            "$ref": "#/definitions/protos.DiscoverToolEventOperationResp"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/public/dapp/discover/tool/favorites/list": {
+            "post": {
+                "description": "获取发现页工具收藏列表",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "dapp发现页"
+                ],
+                "summary": "获取发现页工具收藏列表",
+                "operationId": "GetDiscoverToolFavoritesList",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "请求体",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/protos.GetDiscoverToolFavoritesListReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "schema": {
+                            "$ref": "#/definitions/protos.GetDiscoverToolFavoritesListResp"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/public/dapp/discover/tool/favorites/operation": {
+            "post": {
+                "description": "发现页工具收藏操作",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "dapp发现页"
+                ],
+                "summary": "发现页工具收藏操作",
+                "operationId": "DiscoverToolFavoritesOperation",
+                "parameters": [
+                    {
+                        "description": "请求体",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/protos.DiscoverToolFavoritesOperationReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "schema": {
+                            "$ref": "#/definitions/protos.DiscoverToolFavoritesOperationResp"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/public/dapp/discover/tool/info/list": {
+            "post": {
+                "description": "获取工具列表",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "dapp发现页"
+                ],
+                "summary": "获取工具列表",
+                "operationId": "GetDiscoverToolInfoList",
+                "parameters": [
+                    {
+                        "description": "请求体",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/protos.GetDiscoverToolInfoListReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "schema": {
+                            "$ref": "#/definitions/protos.GetDiscoverToolInfoListResp"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/public/dapp/discover/toolbar/list": {
+            "post": {
+                "description": "获取发现页工具栏列表",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "dapp发现页"
+                ],
+                "summary": "获取发现页工具栏列表",
+                "operationId": "GetDiscoverToolbarList",
+                "parameters": [
+                    {
+                        "description": "请求体",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/protos.GetDiscoverToolbarListReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "schema": {
+                            "$ref": "#/definitions/protos.GetDiscoverToolbarListResp"
+                        }
+                    }
+                }
+            }
+        },
         "/api/v1/public/dapp/manage/banner/list": {
             "post": {
                 "description": "获取轮播图列表",
@@ -430,258 +682,6 @@ const docTemplate = `{
                         "description": "成功",
                         "schema": {
                             "$ref": "#/definitions/protos.GetNetworkListResp"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/public/dapp/tool/categories/list": {
-            "post": {
-                "description": "获取工具分类列表",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "dapp发现页"
-                ],
-                "summary": "获取工具分类列表",
-                "operationId": "GetDiscoverToolCategoriesList",
-                "parameters": [
-                    {
-                        "description": "请求体",
-                        "name": "request",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/protos.GetDiscoverToolCategoriesListReq"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "成功",
-                        "schema": {
-                            "$ref": "#/definitions/protos.GetDiscoverToolCategoriesListResp"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/public/dapp/tool/event/list": {
-            "post": {
-                "description": "发现页工具访问记录列表",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "dapp发现页"
-                ],
-                "summary": "发现页工具访问记录列表",
-                "operationId": "GetDiscoverToolEventList",
-                "parameters": [
-                    {
-                        "description": "请求体",
-                        "name": "request",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/protos.GetDiscoverToolEventListReq"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "成功",
-                        "schema": {
-                            "$ref": "#/definitions/protos.GetDiscoverToolEventListResp"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/public/dapp/tool/event/operation": {
-            "post": {
-                "description": "发现页工具访问记录操作",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "dapp发现页"
-                ],
-                "summary": "发现页工具访问记录操作",
-                "operationId": "DiscoverToolEventOperation",
-                "parameters": [
-                    {
-                        "description": "请求体",
-                        "name": "request",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/protos.DiscoverToolEventOperationReq"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "成功",
-                        "schema": {
-                            "$ref": "#/definitions/protos.DiscoverToolEventOperationResp"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/public/dapp/tool/favorites/list": {
-            "post": {
-                "description": "获取发现页工具收藏列表",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "dapp发现页"
-                ],
-                "summary": "获取发现页工具收藏列表",
-                "operationId": "GetDiscoverToolFavoritesList",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "token",
-                        "name": "Authorization",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
-                        "description": "请求体",
-                        "name": "request",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/protos.GetDiscoverToolFavoritesListReq"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "成功",
-                        "schema": {
-                            "$ref": "#/definitions/protos.GetDiscoverToolFavoritesListResp"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/public/dapp/tool/favorites/operation": {
-            "post": {
-                "description": "发现页工具收藏操作",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "dapp发现页"
-                ],
-                "summary": "发现页工具收藏操作",
-                "operationId": "DiscoverToolFavoritesOperation",
-                "parameters": [
-                    {
-                        "description": "请求体",
-                        "name": "request",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/protos.DiscoverToolFavoritesOperationReq"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "成功",
-                        "schema": {
-                            "$ref": "#/definitions/protos.DiscoverToolFavoritesOperationResp"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/public/dapp/tool/info/list": {
-            "post": {
-                "description": "获取工具列表",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "dapp发现页"
-                ],
-                "summary": "获取工具列表",
-                "operationId": "GetDiscoverToolInfoList",
-                "parameters": [
-                    {
-                        "description": "请求体",
-                        "name": "request",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/protos.GetDiscoverToolInfoListReq"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "成功",
-                        "schema": {
-                            "$ref": "#/definitions/protos.GetDiscoverToolInfoListResp"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/public/dapp/toolbar/list": {
-            "post": {
-                "description": "获取发现页工具栏列表",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "dapp发现页"
-                ],
-                "summary": "获取发现页工具栏列表",
-                "operationId": "GetDiscoverToolbarList",
-                "parameters": [
-                    {
-                        "description": "请求体",
-                        "name": "request",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/protos.GetDiscoverToolbarListReq"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "成功",
-                        "schema": {
-                            "$ref": "#/definitions/protos.GetDiscoverToolbarListResp"
                         }
                     }
                 }
@@ -1378,6 +1378,10 @@ const docTemplate = `{
         "protos.GetManageDiscoverToolInfoListReq": {
             "type": "object",
             "properties": {
+                "categories_id": {
+                    "description": "分类ID",
+                    "type": "integer"
+                },
                 "page": {
                     "type": "integer"
                 },

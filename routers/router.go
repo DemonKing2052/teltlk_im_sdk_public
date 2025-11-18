@@ -29,7 +29,7 @@ func InitRouter() *gin.Engine {
 	dappAdmin.POST("/manage/discover/toolbar/operation", controllers.ManageDiscovertoolbarOperation)
 	//////////////////////////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////dapp发现页面管理接口//////////////////////////////////////////////////////////////
-	router.Use(middleware.Cors())
+	router.Use(middleware.GinCors())
 	dapp := api.Group("/dapp")
 	dapp.POST("/banner/list", controllers.GetBannerList)
 

@@ -26,7 +26,7 @@ Mysql:
 
 Teltlk:
   #open im
-  TestImUrl: "https://dev2-im.api.teltlk.com/api"
+  TestImUrl: "https://dev3-im.api.teltlk.com/api"
   #open im model
   ImUrl: "https://im.api.teltlk.com/api"
   #回调自己

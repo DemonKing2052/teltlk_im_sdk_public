@@ -212,8 +212,18 @@ func GetDiscoverToolInfoList(c *gin.Context) {
 			CommunityTutorial:     v.CommunityTutorial,
 			Status:                v.Status,
 			Sort:                  v.Sort,
+			Tags:                  v.Tags,
+			IsFavorites:           model.FavoritesStatusNo,
 			CreatedAt:             v.CreatedAt,
 			UpdatedAt:             v.UpdatedAt,
+		}
+		if req.UserId != "" {
+			toolFavor, _ := svc.Ctx.DappDiscoverToolFavoritesModel.FindOneByUserIdToolId(c.Request.Context(), req.UserId, v.Id)
+			if toolFavor != nil {
+				if toolFavor.Status == model.FavoritesStatusYes {
+					r.IsFavorites = model.FavoritesStatusYes
+				}
+			}
 		}
 		for _, v := range v.CategoryIds {
 			categories, err := svc.Ctx.DappDiscoverToolCategoriesModel.FindOne(c.Request.Context(), v)
@@ -326,7 +336,11 @@ func GetDiscoverToolFavoritesList(c *gin.Context) {
 	if _, ok := usInfo.Data["userID"]; ok {
 		uid = usInfo.Data["userID"].(string)
 	}
-
+	if uid == "" {
+		fmt.Errorf("user not exist ")
+		c.JSON(http.StatusOK, e.GetMsg(e.ErrorUserNotExist))
+		return
+	}
 	pageData := utils.PageData{Page: int(req.Page), PageSize: int(req.PageSize)}
 	page := utils.GetPageData(pageData)
 
@@ -421,6 +435,11 @@ func DiscoverToolFavoritesOperation(c *gin.Context) {
 	if _, ok := usInfo.Data["userID"]; ok {
 		uid = usInfo.Data["userID"].(string)
 	}
+	if uid == "" {
+		fmt.Errorf("user not exist ")
+		c.JSON(http.StatusOK, e.GetMsg(e.ErrorUserNotExist))
+		return
+	}
 	toolInfo, err := svc.Ctx.DappDiscoverToolInfoModel.FindOne(c.Request.Context(), req.ToolId)
 	if err != nil {
 		fmt.Println(err.Error())
@@ -479,6 +498,11 @@ func GetDiscoverToolEventList(c *gin.Context) {
 	uid := ""
 	if _, ok := usInfo.Data["userID"]; ok {
 		uid = usInfo.Data["userID"].(string)
+	}
+	if uid == "" {
+		fmt.Errorf("user not exist ")
+		c.JSON(http.StatusOK, e.GetMsg(e.ErrorUserNotExist))
+		return
 	}
 	pageData := utils.PageData{Page: int(req.Page), PageSize: int(req.PageSize)}
 	page := utils.GetPageData(pageData)
@@ -563,6 +587,9 @@ func DiscoverToolEventOperation(c *gin.Context) {
 		c.JSON(http.StatusOK, e.GetMsg(e.ErrorInvalidParam))
 		return
 	}
+	if req.EventType == "" {
+		req.EventType = "view"
+	}
 	token := c.GetHeader("token")
 	usInfo, err := interfaces.GetUserInfo(token, svc.Ctx.Config.Mode)
 	if err != nil {
@@ -573,6 +600,11 @@ func DiscoverToolEventOperation(c *gin.Context) {
 	uid := ""
 	if _, ok := usInfo.Data["userID"]; ok {
 		uid = usInfo.Data["userID"].(string)
+	}
+	if uid == "" {
+		fmt.Errorf("user not exist ")
+		c.JSON(http.StatusOK, e.GetMsg(e.ErrorUserNotExist))
+		return
 	}
 	ip := c.GetHeader("X-Real-IP")
 	if ip == "" {

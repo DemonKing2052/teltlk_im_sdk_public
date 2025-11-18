@@ -6,6 +6,7 @@ var MsgFlags = map[int64]string{
 	//
 	ErrorInvalidParam:  "请求参数错误",
 	ErrorTokenNotExist: "请登录后再操作",
+	ErrorUserNotExist:  "user not exist", //用户不存在
 }
 
 type MyError struct {

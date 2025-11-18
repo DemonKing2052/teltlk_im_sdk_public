@@ -62,7 +62,7 @@ func (m *defaultDappDiscoverToolFavoritesModel) FindOne(ctx context.Context, id 
 
 func (m *defaultDappDiscoverToolFavoritesModel) FindOneByUserIdToolId(ctx context.Context, userId string, toolId int64) (*DappDiscoverToolFavorites, error) {
 	var resp DappDiscoverToolFavorites
-	err := m.conn.WithContext(ctx).Table(m.table).Where("`user_id` = ? and `tool_id` = ?", userId, toolId).Take(&resp).Error
+	err := m.conn.WithContext(ctx).Table(m.table).Where("`user_id` = ? and `tool_id` = ? ", userId, toolId).Take(&resp).Error
 	switch err {
 	case nil:
 		return &resp, nil

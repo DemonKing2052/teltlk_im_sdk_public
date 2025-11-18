@@ -55,6 +55,7 @@ type GetNetworkListResp struct {
 }
 
 type GetDiscoverToolInfoListReq struct {
+	UserId       string `json:"user_id"`
 	ToolName     string `json:"tool_name"`     //工具名称
 	NetWorkId    int64  `json:"net_work_id"`   //网络ID
 	CategoriesId int64  `json:"categories_id"` //分类ID
@@ -89,6 +90,8 @@ type GetDiscoverToolInfoListResp struct {
 	CommunityTutorial     string             `json:"community_tutorial" `       // 社区教程跳转URL
 	Status                int64              `json:"status" `                   // 1-显示 2-隐藏
 	Sort                  int64              `json:"sort" `                     // 排序
+	Tags                  []string           `json:"tags" `                     // 标签: hot-热门 new-最新 top - 置顶
+	IsFavorites           int64              `json:"is_favorites"`              // 收藏状态：1收藏，2未收藏
 	CreatedAt             time.Time          `json:"created_at" `
 	UpdatedAt             time.Time          `json:"updated_at" `
 }

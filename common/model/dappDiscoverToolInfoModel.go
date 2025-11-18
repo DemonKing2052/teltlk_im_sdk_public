@@ -45,7 +45,7 @@ func (m *defaultDappDiscoverToolInfoModel) DiscoverToolInfoFindListPage(ctx cont
 	}
 	if tag != "" {
 		where += " AND JSON_CONTAINS(tags, ?, '$')"
-		args = append(args, fmt.Sprintf("[%s]", tag))
+		args = append(args, fmt.Sprintf("[\"%s\"]", tag))
 	}
 	var resp []DappDiscoverToolInfo
 	var count int64

@@ -7,6 +7,12 @@ import (
 	"gorm.io/gorm"
 )
 
+const (
+	FavoritesStatusYes = 1 //
+	FavoritesStatusNo  = 2 //
+
+)
+
 var _ DappDiscoverToolFavoritesModel = (*customDappDiscoverToolFavoritesModel)(nil)
 
 type (

@@ -7,6 +7,7 @@ const (
 	ServerError        = 500
 	ErrorInvalidParam  = 2
 	ErrorTokenNotExist = 1004
+	ErrorUserNotExist  = 1005
 )
 
 // 系统错误

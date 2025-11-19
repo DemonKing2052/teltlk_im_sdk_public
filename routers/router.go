@@ -49,13 +49,13 @@ func InitRouter() *gin.Engine {
 	dapp.Any("/discover/tool/event/operation", controllers.DiscoverToolEventOperation)
 	//////////////////////////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////前端日志上报//////////////////////////////////////////////////////////////
-	clientLog := api.Group("/log")
+	clientLog := api.Group("/client")
 	clientLog.Use(middleware.GinCors())
-	clientLog.Any("", controllers.GetClientLogReporting)
-	clientLog.Any("/reporting", controllers.ClientLogReporting)
+	clientLog.Any("/log", controllers.GetClientLogReporting)
+	clientLog.Any("/log/reporting", controllers.ClientLogReporting)
 	//////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////im开放接口////////////////////////////////////////////////////////////////
-	im := api.Group("/im")
+	im := api.Group("")
 	im.Use(middleware.GinCors())
 	im.Any("/authenticate", controllers.Authenticate)
 	//IM检查服务状态

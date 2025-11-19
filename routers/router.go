@@ -9,28 +9,29 @@ import (
 func InitRouter() *gin.Engine {
 
 	router := gin.Default()
+	router.Use(middleware.GinCors())
 	api := router.Group("/api/v1/public")
 	//////////////////////////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////dapp发现页面管理接口//////////////////////////////////////////////////////////////
-	dappAdmin := api.Group("/dapp")
-	dappAdmin.POST("/manage/banner/list", controllers.GetManageBannerList)
-	dappAdmin.POST("/manage/banner/operation", controllers.ManageBannerOperation)
+	dappAdmin := api.Group("/manage/dapp")
+	dappAdmin.POST("/banner/list", controllers.GetManageBannerList)
+	dappAdmin.POST("/banner/operation", controllers.ManageBannerOperation)
 
-	dappAdmin.POST("/manage/discover/tool/categories/list", controllers.GetManageDiscoverToolCategoriesList)
-	dappAdmin.POST("/manage/discover/tool/categories/operation", controllers.ManageDiscoverToolCategoriesOperation)
+	dappAdmin.POST("/discover/tool/categories/list", controllers.GetManageDiscoverToolCategoriesList)
+	dappAdmin.POST("/discover/tool/categories/operation", controllers.ManageDiscoverToolCategoriesOperation)
 
-	dappAdmin.POST("/manage/network/list", controllers.GetManageNetworkList)
-	dappAdmin.POST("/manage/network/operation", controllers.ManageNetworkOperation)
+	dappAdmin.POST("/network/list", controllers.GetManageNetworkList)
+	dappAdmin.POST("/network/operation", controllers.ManageNetworkOperation)
 
-	dappAdmin.POST("/manage/discover/tool/info/list", controllers.GetManageDiscoverToolInfoList)
-	dappAdmin.POST("/manage/discover/tool/info/operation", controllers.ManageDiscoverToolInfoOperation)
+	dappAdmin.POST("/discover/tool/info/list", controllers.GetManageDiscoverToolInfoList)
+	dappAdmin.POST("/discover/tool/info/operation", controllers.ManageDiscoverToolInfoOperation)
 
-	dappAdmin.POST("/manage/discover/toolbar/list", controllers.GetManageDiscovertoolbarList)
-	dappAdmin.POST("/manage/discover/toolbar/operation", controllers.ManageDiscovertoolbarOperation)
+	dappAdmin.POST("/discover/toolbar/list", controllers.GetManageDiscovertoolbarList)
+	dappAdmin.POST("/discover/toolbar/operation", controllers.ManageDiscovertoolbarOperation)
 	//////////////////////////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////dapp发现页面管理接口//////////////////////////////////////////////////////////////
-	router.Use(middleware.GinCors())
 	dapp := api.Group("/dapp")
+	//dapp.Use(middleware.GinCors())
 	dapp.POST("/banner/list", controllers.GetBannerList)
 
 	dapp.POST("/discover/tool/categories/list", controllers.GetDiscoverToolCategoriesList)
@@ -48,29 +49,30 @@ func InitRouter() *gin.Engine {
 	dapp.POST("/discover/tool/event/operation", controllers.DiscoverToolEventOperation)
 	//////////////////////////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////前端日志上报//////////////////////////////////////////////////////////////
-
-	api.POST("/client/log/reporting", controllers.ClientLogReporting)
-	api.POST("/client/log", controllers.GetClientLogReporting)
+	clientLog := router.Group("/api/v1/public/client")
+	//clientLog.Use(middleware.GinCors())
+	clientLog.POST("/log", controllers.GetClientLogReporting)
+	clientLog.POST("/log/reporting", controllers.ClientLogReporting)
 	//////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////im开放接口////////////////////////////////////////////////////////////////
-	api.POST("/authenticate", controllers.Authenticate)
-
+	im := router.Group("/api/v1/public")
+	//im.Use(middleware.GinCors())
+	im.POST("/authenticate", controllers.Authenticate)
 	//IM检查服务状态
-	api.GET("/api/circle/version", controllers.Version)
+	im.GET("/api/circle/version", controllers.Version)
 	//统计回调方法
-	api.POST("/receivePayResult", controllers.ReceivePayResult)
+	im.POST("/receivePayResult", controllers.ReceivePayResult)
 	//IM
-
 	// 支付相关-订单退款
-	api.POST("/order/refund", controllers.OrderRefund)
+	im.POST("/order/refund", controllers.OrderRefund)
 	// 支付相关-订单提现
-	api.POST("/order/withdrawal", controllers.OrderWithdrawal)
+	im.POST("/order/withdrawal", controllers.OrderWithdrawal)
 	// 支付相关-创建订单
-	api.POST("/create/order", controllers.CreateOrder)
+	im.POST("/create/order", controllers.CreateOrder)
 	// 支付相关-查询订单
-	api.POST("/order/info", controllers.GetOrderInfo)
+	im.POST("/order/info", controllers.GetOrderInfo)
 	// 支付相关-查询openid
-	api.POST("/openid/user/info", controllers.GetOpenIdUserInfo)
+	im.POST("/openid/user/info", controllers.GetOpenIdUserInfo)
 
 	return router
 

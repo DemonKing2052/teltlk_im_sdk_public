@@ -20,7 +20,7 @@ import (
 // @Produce json
 // @Param request body protos.GetManageBannerListReq true "请求体"
 // @Success 200 {object} protos.GetManageBannerListResp "成功"
-// @Router /api/v1/public/dapp/manage/banner/list [post]
+// @Router /api/v1/public/manage/dapp/banner/list [post]
 func GetManageBannerList(c *gin.Context) {
 	var req protos.GetManageBannerListReq
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -74,7 +74,7 @@ func GetManageBannerList(c *gin.Context) {
 // @Produce json
 // @Param request body protos.ManageBannerOperationReq true "请求体"
 // @Success 200 {object} protos.ManageBannerOperationResp "成功"
-// @Router /api/v1/public/dapp/manage/banner/operation [post]
+// @Router /api/v1/public/manage/dapp/banner/operation [post]
 func ManageBannerOperation(c *gin.Context) {
 	var req protos.ManageBannerOperationReq
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -184,7 +184,7 @@ func ManageBannerOperation(c *gin.Context) {
 // @Produce json
 // @Param request body protos.GetManageDiscoverToolCategoriesListReq true "请求体"
 // @Success 200 {object} protos.GetManageDiscoverToolCategoriesListResp "成功"
-// @Router /api/v1/public/dapp/manage/discover/tool/categories/list [post]
+// @Router /api/v1/public/manage/dapp/discover/tool/categories/list [post]
 func GetManageDiscoverToolCategoriesList(c *gin.Context) {
 	var req protos.GetManageDiscoverToolCategoriesListReq
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -235,7 +235,7 @@ func GetManageDiscoverToolCategoriesList(c *gin.Context) {
 // @Produce json
 // @Param request body protos.ManageDiscoverToolCategoriesOperationReq true "请求体"
 // @Success 200 {object} protos.ManageDiscoverToolCategoriesOperationResp "成功"
-// @Router /api/v1/public/dapp/manage/discover/tool/categories/operation [post]
+// @Router /api/v1/public/manage/dapp/discover/tool/categories/operation [post]
 func ManageDiscoverToolCategoriesOperation(c *gin.Context) {
 	var req protos.ManageDiscoverToolCategoriesOperationReq
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -315,7 +315,7 @@ func ManageDiscoverToolCategoriesOperation(c *gin.Context) {
 // @Produce json
 // @Param request body protos.GetManageNetworkListReq true "请求体"
 // @Success 200 {object} protos.GetManageNetworkListResp "成功"
-// @Router /api/v1/public/dapp/manage/network/list [post]
+// @Router /api/v1/public/manage/dapp/network/list [post]
 func GetManageNetworkList(c *gin.Context) {
 	var req protos.GetManageNetworkListReq
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -366,7 +366,7 @@ func GetManageNetworkList(c *gin.Context) {
 // @Produce json
 // @Param request body protos.ManageNetworkOperationReq true "请求体"
 // @Success 200 {object} protos.ManageNetworkOperationResp "成功"
-// @Router /api/v1/public/dapp/manage/network/operation [post]
+// @Router /api/v1/public/manage/dapp/network/operation [post]
 func ManageNetworkOperation(c *gin.Context) {
 	var req protos.ManageNetworkOperationReq
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -447,7 +447,7 @@ func ManageNetworkOperation(c *gin.Context) {
 // @Produce json
 // @Param request body protos.GetManageDiscoverToolInfoListReq true "请求体"
 // @Success 200 {object} protos.GetManageDiscoverToolInfoListResp "成功"
-// @Router /api/v1/public/dapp/manage/discover/tool/info/list [post]
+// @Router /api/v1/public/manage/dapp/discover/tool/info/list [post]
 func GetManageDiscoverToolInfoList(c *gin.Context) {
 	var req protos.GetManageDiscoverToolInfoListReq
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -528,7 +528,7 @@ func GetManageDiscoverToolInfoList(c *gin.Context) {
 // @Produce json
 // @Param request body protos.ManageDiscoverToolInfoOperationReq true "请求体"
 // @Success 200 {object} protos.ManageDiscoverToolInfoOperationResp "成功"
-// @Router /api/v1/public/dapp/manage/discover/tool/info/operation [post]
+// @Router /api/v1/public/manage/dapp/discover/tool/info/operation [post]
 func ManageDiscoverToolInfoOperation(c *gin.Context) {
 	var req protos.ManageDiscoverToolInfoOperationReq
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -623,7 +623,7 @@ func ManageDiscoverToolInfoOperation(c *gin.Context) {
 // @Produce json
 // @Param request body protos.GetManageDiscovertoolbarListReq true "请求体"
 // @Success 200 {object} protos.GetManageDiscovertoolbarListResp "成功"
-// @Router /api/v1/public/dapp/manage/discover/toolbar/list [post]
+// @Router /api/v1/public/manage/dapp/discover/toolbar/list [post]
 func GetManageDiscovertoolbarList(c *gin.Context) {
 	var req protos.GetManageDiscovertoolbarListReq
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -668,7 +668,7 @@ func GetManageDiscovertoolbarList(c *gin.Context) {
 // @Produce json
 // @Param request body protos.ManageDiscovertoolbarOperationReq true "请求体"
 // @Success 200 {object} protos.ManageDiscovertoolbarOperationResp "成功"
-// @Router /api/v1/public/dapp/manage/discover/toolbar/operation [post]
+// @Router /api/v1/public/manage/dapp/discover/toolbar/operation [post]
 func ManageDiscovertoolbarOperation(c *gin.Context) {
 	var req protos.ManageDiscovertoolbarOperationReq
 	if err := c.ShouldBindJSON(&req); err != nil {

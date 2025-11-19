@@ -9,7 +9,7 @@ import (
 func InitRouter() *gin.Engine {
 
 	router := gin.Default()
-	router.Use(middleware.GinCors())
+	//router.Use(middleware.GinCors())
 	api := router.Group("/api/v1/public")
 	//////////////////////////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////dapp发现页面管理接口//////////////////////////////////////////////////////////////
@@ -31,48 +31,48 @@ func InitRouter() *gin.Engine {
 	//////////////////////////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////dapp发现页面管理接口//////////////////////////////////////////////////////////////
 	dapp := api.Group("/dapp")
-	//dapp.Use(middleware.GinCors())
-	dapp.POST("/banner/list", controllers.GetBannerList)
+	dapp.Use(middleware.GinCors())
+	dapp.Any("/banner/list", controllers.GetBannerList)
 
-	dapp.POST("/discover/tool/categories/list", controllers.GetDiscoverToolCategoriesList)
+	dapp.Any("/discover/tool/categories/list", controllers.GetDiscoverToolCategoriesList)
 
-	dapp.POST("/network/list", controllers.GetNetworkList)
+	dapp.Any("/network/list", controllers.GetNetworkList)
 
-	dapp.POST("/discover/tool/info/list", controllers.GetDiscoverToolInfoList)
+	dapp.Any("/discover/tool/info/list", controllers.GetDiscoverToolInfoList)
 
-	dapp.POST("/discover/toolbar/list", controllers.GetDiscoverToolbarList)
+	dapp.Any("/discover/toolbar/list", controllers.GetDiscoverToolbarList)
 
-	dapp.POST("/discover/tool/favorites/list", controllers.GetDiscoverToolFavoritesList)
-	dapp.POST("/discover/tool/favorites/operation", controllers.DiscoverToolFavoritesOperation)
+	dapp.Any("/discover/tool/favorites/list", controllers.GetDiscoverToolFavoritesList)
+	dapp.Any("/discover/tool/favorites/operation", controllers.DiscoverToolFavoritesOperation)
 
-	dapp.POST("/discover/tool/event/list", controllers.GetDiscoverToolEventList)
-	dapp.POST("/discover/tool/event/operation", controllers.DiscoverToolEventOperation)
+	dapp.Any("/discover/tool/event/list", controllers.GetDiscoverToolEventList)
+	dapp.Any("/discover/tool/event/operation", controllers.DiscoverToolEventOperation)
 	//////////////////////////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////前端日志上报//////////////////////////////////////////////////////////////
-	clientLog := router.Group("/api/v1/public/client")
-	//clientLog.Use(middleware.GinCors())
-	clientLog.POST("/log", controllers.GetClientLogReporting)
-	clientLog.POST("/log/reporting", controllers.ClientLogReporting)
+	clientLog := api.Group("/log")
+	clientLog.Use(middleware.GinCors())
+	clientLog.Any("", controllers.GetClientLogReporting)
+	clientLog.Any("/reporting", controllers.ClientLogReporting)
 	//////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////im开放接口////////////////////////////////////////////////////////////////
 	im := router.Group("/api/v1/public")
-	//im.Use(middleware.GinCors())
-	im.POST("/authenticate", controllers.Authenticate)
+	im.Use(middleware.GinCors())
+	im.Any("/authenticate", controllers.Authenticate)
 	//IM检查服务状态
-	im.GET("/api/circle/version", controllers.Version)
+	im.Any("/api/circle/version", controllers.Version)
 	//统计回调方法
-	im.POST("/receivePayResult", controllers.ReceivePayResult)
-	//IM
+	im.Any("/receivePayResult", controllers.ReceivePayResult)
+	//IMAny
 	// 支付相关-订单退款
-	im.POST("/order/refund", controllers.OrderRefund)
+	im.Any("/order/refund", controllers.OrderRefund)
 	// 支付相关-订单提现
-	im.POST("/order/withdrawal", controllers.OrderWithdrawal)
+	im.Any("/order/withdrawal", controllers.OrderWithdrawal)
 	// 支付相关-创建订单
-	im.POST("/create/order", controllers.CreateOrder)
+	im.Any("/create/order", controllers.CreateOrder)
 	// 支付相关-查询订单
-	im.POST("/order/info", controllers.GetOrderInfo)
+	im.Any("/order/info", controllers.GetOrderInfo)
 	// 支付相关-查询openid
-	im.POST("/openid/user/info", controllers.GetOpenIdUserInfo)
+	im.Any("/openid/user/info", controllers.GetOpenIdUserInfo)
 
 	return router
 

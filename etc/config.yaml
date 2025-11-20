@@ -4,8 +4,8 @@ Port: 9503
 Mode: dev
 
 Token:
-    Appid: BusinessGj76dlhjda9jhqw83aldakMn
-    Secret: tkXwfkikm90lqdGhxPokdqDgjkNwHeqSoLpUjNvxSXaM
+    Appid:
+    Secret:
     Expire: 86400
 
 Mysql:
@@ -30,7 +30,6 @@ Teltlk:
   #open im model
   ImUrl: "https://im.api.teltlk.com/api"
   #回调自己
-  CallBackUrl: "https://dev.api.circle.teltlk.com"
-
+  CallBackUrl: ""
 ClientLogReq:
     path: "client_log_req.log"

@@ -302,7 +302,42 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/v1/public/dapp/manage/banner/list": {
+        "/api/v1/public/dapp/network/list": {
+            "post": {
+                "description": "获取网络列表",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "dapp发现页"
+                ],
+                "summary": "获取网络列表",
+                "operationId": "GetNetworkList",
+                "parameters": [
+                    {
+                        "description": "请求体",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/protos.GetNetworkListReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "schema": {
+                            "$ref": "#/definitions/protos.GetNetworkListResp"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/public/manage/dapp/banner/list": {
             "post": {
                 "description": "获取轮播图列表",
                 "consumes": [
@@ -337,7 +372,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/v1/public/dapp/manage/banner/operation": {
+        "/api/v1/public/manage/dapp/banner/operation": {
             "post": {
                 "description": "轮播图操作管理",
                 "consumes": [
@@ -372,7 +407,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/v1/public/dapp/manage/discover/tool/categories/list": {
+        "/api/v1/public/manage/dapp/discover/tool/categories/list": {
             "post": {
                 "description": "工具分类列表管理",
                 "consumes": [
@@ -407,7 +442,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/v1/public/dapp/manage/discover/tool/categories/operation": {
+        "/api/v1/public/manage/dapp/discover/tool/categories/operation": {
             "post": {
                 "description": "工具分类操作管理",
                 "consumes": [
@@ -442,7 +477,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/v1/public/dapp/manage/discover/tool/info/list": {
+        "/api/v1/public/manage/dapp/discover/tool/info/list": {
             "post": {
                 "description": "工具列表管理",
                 "consumes": [
@@ -477,7 +512,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/v1/public/dapp/manage/discover/tool/info/operation": {
+        "/api/v1/public/manage/dapp/discover/tool/info/operation": {
             "post": {
                 "description": "工具操作管理",
                 "consumes": [
@@ -512,7 +547,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/v1/public/dapp/manage/discover/toolbar/list": {
+        "/api/v1/public/manage/dapp/discover/toolbar/list": {
             "post": {
                 "description": "发现页工具栏列表管理",
                 "consumes": [
@@ -547,7 +582,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/v1/public/dapp/manage/discover/toolbar/operation": {
+        "/api/v1/public/manage/dapp/discover/toolbar/operation": {
             "post": {
                 "description": "发现页工具栏操作管理",
                 "consumes": [
@@ -582,7 +617,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/v1/public/dapp/manage/network/list": {
+        "/api/v1/public/manage/dapp/network/list": {
             "post": {
                 "description": "区块网络列表管理",
                 "consumes": [
@@ -617,7 +652,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/v1/public/dapp/manage/network/operation": {
+        "/api/v1/public/manage/dapp/network/operation": {
             "post": {
                 "description": "区块网络操作管理",
                 "consumes": [
@@ -647,41 +682,6 @@ const docTemplate = `{
                         "description": "成功",
                         "schema": {
                             "$ref": "#/definitions/protos.ManageNetworkOperationResp"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/public/dapp/network/list": {
-            "post": {
-                "description": "获取网络列表",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "dapp发现页"
-                ],
-                "summary": "获取网络列表",
-                "operationId": "GetNetworkList",
-                "parameters": [
-                    {
-                        "description": "请求体",
-                        "name": "request",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/protos.GetNetworkListReq"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "成功",
-                        "schema": {
-                            "$ref": "#/definitions/protos.GetNetworkListResp"
                         }
                     }
                 }
@@ -1142,6 +1142,9 @@ const docTemplate = `{
                 "tool_name": {
                     "description": "工具名称",
                     "type": "string"
+                },
+                "user_id": {
+                    "type": "string"
                 }
             }
         },
@@ -1169,6 +1172,10 @@ const docTemplate = `{
                     "description": "图片地址",
                     "type": "string"
                 },
+                "is_favorites": {
+                    "description": "收藏状态：1收藏，2未收藏",
+                    "type": "integer"
+                },
                 "service_support": {
                     "description": "服务支持内容",
                     "type": "string"
@@ -1194,6 +1201,13 @@ const docTemplate = `{
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/protos.NetWorkInfoItem"
+                    }
+                },
+                "tags": {
+                    "description": "标签: hot-热门 new-最新 top - 置顶",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
                     }
                 },
                 "thumbnail": {

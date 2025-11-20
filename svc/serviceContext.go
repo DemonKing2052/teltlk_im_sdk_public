@@ -1,7 +1,6 @@
 package svc
 
 import (
-	"ImSdk/common/model"
 	"ImSdk/configs"
 	"fmt"
 	"gorm.io/driver/mysql"
@@ -22,14 +21,6 @@ type ServiceContext struct {
 		FhMutex sync.Mutex
 		Fh      *os.File
 	}
-	//
-	DappBannerModel                 model.DappBannerModel
-	DappNetworkModel                model.DappNetworkModel
-	DappDiscoverToolbarModel        model.DappDiscoverToolbarModel
-	DappDiscoverToolCategoriesModel model.DappDiscoverToolCategoriesModel
-	DappDiscoverToolInfoModel       model.DappDiscoverToolInfoModel
-	DappDiscoverToolFavoritesModel  model.DappDiscoverToolFavoritesModel
-	DappDiscoverToolEventsModel     model.DappDiscoverToolEventsModel
 }
 
 func NewServiceContext(c configs.Config) *ServiceContext {
@@ -43,14 +34,6 @@ func NewServiceContext(c configs.Config) *ServiceContext {
 		}{
 			Fh: ensureLogFile(c.ClientLogReq.Path),
 		},
-		//
-		DappBannerModel:                 model.NewDappBannerModel(db),
-		DappNetworkModel:                model.NewDappNetworkModel(db),
-		DappDiscoverToolbarModel:        model.NewDappDiscoverToolbarModel(db),
-		DappDiscoverToolCategoriesModel: model.NewDappDiscoverToolCategoriesModel(db),
-		DappDiscoverToolInfoModel:       model.NewDappDiscoverToolInfoModel(db),
-		DappDiscoverToolFavoritesModel:  model.NewDappDiscoverToolFavoritesModel(db),
-		DappDiscoverToolEventsModel:     model.NewDappDiscoverToolEventsModel(db),
 	}
 }
 

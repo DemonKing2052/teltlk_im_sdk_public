@@ -320,6 +320,8 @@ definitions:
       tool_name:
         description: 工具名称
         type: string
+      user_id:
+        type: string
     type: object
   protos.GetDiscoverToolInfoListResp:
     properties:
@@ -338,6 +340,9 @@ definitions:
       img_href:
         description: 图片地址
         type: string
+      is_favorites:
+        description: 收藏状态：1收藏，2未收藏
+        type: integer
       service_support:
         description: 服务支持内容
         type: string
@@ -357,6 +362,11 @@ definitions:
         description: 支持的网络ID列表
         items:
           $ref: '#/definitions/protos.NetWorkInfoItem'
+        type: array
+      tags:
+        description: '标签: hot-热门 new-最新 top - 置顶'
+        items:
+          type: string
         type: array
       thumbnail:
         description: 缩略图 URL
@@ -1071,236 +1081,6 @@ paths:
       summary: 获取发现页工具栏列表
       tags:
       - dapp发现页
-  /api/v1/public/dapp/manage/banner/list:
-    post:
-      consumes:
-      - application/json
-      description: 获取轮播图列表
-      operationId: GetManageBannerList
-      parameters:
-      - description: 请求体
-        in: body
-        name: request
-        required: true
-        schema:
-          $ref: '#/definitions/protos.GetManageBannerListReq'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 成功
-          schema:
-            $ref: '#/definitions/protos.GetManageBannerListResp'
-      summary: 获取轮播图列表
-      tags:
-      - dapp管理
-  /api/v1/public/dapp/manage/banner/operation:
-    post:
-      consumes:
-      - application/json
-      description: 轮播图操作管理
-      operationId: ManageBannerOperation
-      parameters:
-      - description: 请求体
-        in: body
-        name: request
-        required: true
-        schema:
-          $ref: '#/definitions/protos.ManageBannerOperationReq'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 成功
-          schema:
-            $ref: '#/definitions/protos.ManageBannerOperationResp'
-      summary: 轮播图操作管理
-      tags:
-      - dapp管理
-  /api/v1/public/dapp/manage/discover/tool/categories/list:
-    post:
-      consumes:
-      - application/json
-      description: 工具分类列表管理
-      operationId: GetManageDiscoverToolCategoriesList
-      parameters:
-      - description: 请求体
-        in: body
-        name: request
-        required: true
-        schema:
-          $ref: '#/definitions/protos.GetManageDiscoverToolCategoriesListReq'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 成功
-          schema:
-            $ref: '#/definitions/protos.GetManageDiscoverToolCategoriesListResp'
-      summary: 工具分类列表管理
-      tags:
-      - dapp发现页管理
-  /api/v1/public/dapp/manage/discover/tool/categories/operation:
-    post:
-      consumes:
-      - application/json
-      description: 工具分类操作管理
-      operationId: ManageDiscoverToolCategoriesOperation
-      parameters:
-      - description: 请求体
-        in: body
-        name: request
-        required: true
-        schema:
-          $ref: '#/definitions/protos.ManageDiscoverToolCategoriesOperationReq'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 成功
-          schema:
-            $ref: '#/definitions/protos.ManageDiscoverToolCategoriesOperationResp'
-      summary: 工具分类操作管理
-      tags:
-      - dapp发现页管理
-  /api/v1/public/dapp/manage/discover/tool/info/list:
-    post:
-      consumes:
-      - application/json
-      description: 工具列表管理
-      operationId: GetManageDiscoverToolInfoList
-      parameters:
-      - description: 请求体
-        in: body
-        name: request
-        required: true
-        schema:
-          $ref: '#/definitions/protos.GetManageDiscoverToolInfoListReq'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 成功
-          schema:
-            $ref: '#/definitions/protos.GetManageDiscoverToolInfoListResp'
-      summary: 工具列表管理
-      tags:
-      - dapp发现页管理
-  /api/v1/public/dapp/manage/discover/tool/info/operation:
-    post:
-      consumes:
-      - application/json
-      description: 工具操作管理
-      operationId: ManageDiscoverToolInfoOperation
-      parameters:
-      - description: 请求体
-        in: body
-        name: request
-        required: true
-        schema:
-          $ref: '#/definitions/protos.ManageDiscoverToolInfoOperationReq'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 成功
-          schema:
-            $ref: '#/definitions/protos.ManageDiscoverToolInfoOperationResp'
-      summary: 工具操作管理
-      tags:
-      - dapp发现页管理
-  /api/v1/public/dapp/manage/discover/toolbar/list:
-    post:
-      consumes:
-      - application/json
-      description: 发现页工具栏列表管理
-      operationId: GetManageDiscovertoolbarList
-      parameters:
-      - description: 请求体
-        in: body
-        name: request
-        required: true
-        schema:
-          $ref: '#/definitions/protos.GetManageDiscovertoolbarListReq'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 成功
-          schema:
-            $ref: '#/definitions/protos.GetManageDiscovertoolbarListResp'
-      summary: 发现页工具栏列表管理
-      tags:
-      - dapp发现页管理
-  /api/v1/public/dapp/manage/discover/toolbar/operation:
-    post:
-      consumes:
-      - application/json
-      description: 发现页工具栏操作管理
-      operationId: ManageDiscovertoolbarOperation
-      parameters:
-      - description: 请求体
-        in: body
-        name: request
-        required: true
-        schema:
-          $ref: '#/definitions/protos.ManageDiscovertoolbarOperationReq'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 成功
-          schema:
-            $ref: '#/definitions/protos.ManageDiscovertoolbarOperationResp'
-      summary: 发现页工具栏操作管理
-      tags:
-      - dapp发现页管理
-  /api/v1/public/dapp/manage/network/list:
-    post:
-      consumes:
-      - application/json
-      description: 区块网络列表管理
-      operationId: GetManageNetworkList
-      parameters:
-      - description: 请求体
-        in: body
-        name: request
-        required: true
-        schema:
-          $ref: '#/definitions/protos.GetManageNetworkListReq'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 成功
-          schema:
-            $ref: '#/definitions/protos.GetManageNetworkListResp'
-      summary: 区块网络列表管理
-      tags:
-      - dapp管理
-  /api/v1/public/dapp/manage/network/operation:
-    post:
-      consumes:
-      - application/json
-      description: 区块网络操作管理
-      operationId: ManageNetworkOperation
-      parameters:
-      - description: 请求体
-        in: body
-        name: request
-        required: true
-        schema:
-          $ref: '#/definitions/protos.ManageNetworkOperationReq'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 成功
-          schema:
-            $ref: '#/definitions/protos.ManageNetworkOperationResp'
-      summary: 区块网络操作管理
-      tags:
-      - dapp管理
   /api/v1/public/dapp/network/list:
     post:
       consumes:
@@ -1324,4 +1104,234 @@ paths:
       summary: 获取网络列表
       tags:
       - dapp发现页
+  /api/v1/public/manage/dapp/banner/list:
+    post:
+      consumes:
+      - application/json
+      description: 获取轮播图列表
+      operationId: GetManageBannerList
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.GetManageBannerListReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.GetManageBannerListResp'
+      summary: 获取轮播图列表
+      tags:
+      - dapp管理
+  /api/v1/public/manage/dapp/banner/operation:
+    post:
+      consumes:
+      - application/json
+      description: 轮播图操作管理
+      operationId: ManageBannerOperation
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.ManageBannerOperationReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.ManageBannerOperationResp'
+      summary: 轮播图操作管理
+      tags:
+      - dapp管理
+  /api/v1/public/manage/dapp/discover/tool/categories/list:
+    post:
+      consumes:
+      - application/json
+      description: 工具分类列表管理
+      operationId: GetManageDiscoverToolCategoriesList
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.GetManageDiscoverToolCategoriesListReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.GetManageDiscoverToolCategoriesListResp'
+      summary: 工具分类列表管理
+      tags:
+      - dapp发现页管理
+  /api/v1/public/manage/dapp/discover/tool/categories/operation:
+    post:
+      consumes:
+      - application/json
+      description: 工具分类操作管理
+      operationId: ManageDiscoverToolCategoriesOperation
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.ManageDiscoverToolCategoriesOperationReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.ManageDiscoverToolCategoriesOperationResp'
+      summary: 工具分类操作管理
+      tags:
+      - dapp发现页管理
+  /api/v1/public/manage/dapp/discover/tool/info/list:
+    post:
+      consumes:
+      - application/json
+      description: 工具列表管理
+      operationId: GetManageDiscoverToolInfoList
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.GetManageDiscoverToolInfoListReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.GetManageDiscoverToolInfoListResp'
+      summary: 工具列表管理
+      tags:
+      - dapp发现页管理
+  /api/v1/public/manage/dapp/discover/tool/info/operation:
+    post:
+      consumes:
+      - application/json
+      description: 工具操作管理
+      operationId: ManageDiscoverToolInfoOperation
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.ManageDiscoverToolInfoOperationReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.ManageDiscoverToolInfoOperationResp'
+      summary: 工具操作管理
+      tags:
+      - dapp发现页管理
+  /api/v1/public/manage/dapp/discover/toolbar/list:
+    post:
+      consumes:
+      - application/json
+      description: 发现页工具栏列表管理
+      operationId: GetManageDiscovertoolbarList
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.GetManageDiscovertoolbarListReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.GetManageDiscovertoolbarListResp'
+      summary: 发现页工具栏列表管理
+      tags:
+      - dapp发现页管理
+  /api/v1/public/manage/dapp/discover/toolbar/operation:
+    post:
+      consumes:
+      - application/json
+      description: 发现页工具栏操作管理
+      operationId: ManageDiscovertoolbarOperation
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.ManageDiscovertoolbarOperationReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.ManageDiscovertoolbarOperationResp'
+      summary: 发现页工具栏操作管理
+      tags:
+      - dapp发现页管理
+  /api/v1/public/manage/dapp/network/list:
+    post:
+      consumes:
+      - application/json
+      description: 区块网络列表管理
+      operationId: GetManageNetworkList
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.GetManageNetworkListReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.GetManageNetworkListResp'
+      summary: 区块网络列表管理
+      tags:
+      - dapp管理
+  /api/v1/public/manage/dapp/network/operation:
+    post:
+      consumes:
+      - application/json
+      description: 区块网络操作管理
+      operationId: ManageNetworkOperation
+      parameters:
+      - description: 请求体
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/protos.ManageNetworkOperationReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/protos.ManageNetworkOperationResp'
+      summary: 区块网络操作管理
+      tags:
+      - dapp管理
 swagger: "2.0"
